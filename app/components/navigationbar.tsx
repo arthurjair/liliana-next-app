@@ -5,7 +5,6 @@ import { useEffect, useState } from "react";
 
 const menuItems = [
 	{ label: "Books", href: "/books" },
-	{ label: "Illustrations", href: "/illustrations" },
 	{ label: "About me", href: "/about" },
 	{ label: "Contact", href: "/contact" },
 ];
@@ -41,21 +40,11 @@ export default function NavigationBar() {
 				</span>
 				</button>
 
-			<Link className="justify-self-center text-base font-semibold tracking-tight" href="/">
+			<Link className="justify-self-center whitespace-nowrap text-2xl font-semibold" href="/">
 				Liliana Erasmus
 			</Link>
 
-			<Link
-				href="/"
-				className="flex h-11 w-11 items-center justify-self-end rounded-md text-xl font-semibold transition-colors hover:bg-zinc-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900"
-				aria-label="Home"
-			>
-				<svg className="mx-auto h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-					<path d="m3 10 9-7 9 7" />
-					<path d="M5 9v11h14V9" />
-					<path d="M9 20v-6h6v6" />
-				</svg>
-			</Link>
+			
 			</div>
 
 			<div
@@ -65,7 +54,7 @@ export default function NavigationBar() {
 			/>
 
 			<div
-				className={`fixed bottom-0 left-0 top-16 w-[min(82vw,20rem)] border-r border-zinc-200 bg-white px-5 py-6 shadow-xl transition-transform duration-300 ease-out sm:hidden ${isMenuOpen ? "translate-x-0" : "-translate-x-full"}`}
+				className={`fixed bottom-0 left-0 top-16 w-full border-r border-zinc-200 bg-white px-5 py-6 shadow-xl transition-transform duration-300 ease-out sm:hidden ${isMenuOpen ? "translate-x-0" : "-translate-x-full"}`}
 				aria-hidden={!isMenuOpen}
 			>
 				<div className="flex flex-col" role="menu">
@@ -73,7 +62,7 @@ export default function NavigationBar() {
 						<Link
 							key={item.href}
 							href={item.href}
-							className="border-b border-zinc-100 py-4 text-lg transition-colors last:border-0 hover:text-pink-500 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900"
+							className="  border-zinc-100 py-4 text-5xl transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900"
 							onClick={() => setIsMenuOpen(false)}
 							role="menuitem"
 						>
