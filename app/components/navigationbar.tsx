@@ -24,7 +24,8 @@ export default function NavigationBar() {
 	}, []);
 
 	return (
-		<nav className="relative z-50 border-b border-zinc-200 bg-white text-zinc-900" aria-label="Main navigation">
+		<nav className="relative z-[60]">
+			{/* navigation and open menu */}
 			<div className="grid h-16 grid-cols-3 items-center px-4 sm:px-6">
 				<button
 				type="button"
@@ -57,18 +58,21 @@ export default function NavigationBar() {
 				className={`fixed bottom-0 left-0 top-16 w-full border-r border-zinc-200 bg-white px-5 py-6 shadow-xl transition-transform duration-300 ease-out sm:hidden ${isMenuOpen ? "translate-x-0" : "-translate-x-full"}`}
 				aria-hidden={!isMenuOpen}
 			>
-				<div className="flex flex-col" role="menu">
+				<div className="flex flex-col items-center py-20" role="menu">
 					{menuItems.map((item) => (
 						<Link
 							key={item.href}
 							href={item.href}
-							className="  border-zinc-100 py-4 text-5xl transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900"
+							className="  border-zinc-100 py-7 text-5xl transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900"
 							onClick={() => setIsMenuOpen(false)}
 							role="menuitem"
 						>
 							{item.label}
 						</Link>
 					))}
+                    <div>
+                        
+                    </div>
 				</div>
 			</div>
 		</nav>
