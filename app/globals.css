@@ -32,3 +32,14 @@ body {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
+
+.book-cover {
+  transform: rotate(var(--book-rotate));
+  transform-origin: bottom;
+}
+
+@media (min-width: 768px) {
+  .book-cover {
+    transform: rotate(var(--book-md-rotate));
+  }
+}
