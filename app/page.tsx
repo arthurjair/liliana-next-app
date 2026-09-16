@@ -165,7 +165,7 @@ export default function BookCarousel() {
           onPointerCancel={endDrag}
           className="relative z-10 pb-1 px-.5 flex min-h-0 w-full flex-1 items-end overflow-x-auto overflow-y-hidden snap-x snap-mandatory  scrollbar-hide [container-type:inline-size] cursor-grab active:cursor-grabbing select-none"
         >
-          <div ref={spacerRef} aria-hidden className="shrink-0 snap-start w-11 md:w-80 lg:w-290" />
+          <div ref={spacerRef} aria-hidden className="shrink-0 snap-start w-11 md:w-80 lg:w-180 xl:w-300" />
 
           {books.map((book, i) => (
             <div

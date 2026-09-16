@@ -24,7 +24,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
       lang="en"
       className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
     >
-      <body suppressHydrationWarning className="flex min-h-screen flex-col">
+      <body id="top" suppressHydrationWarning className="flex min-h-screen flex-col">
         <NavigationBar />
         {children}
       </body>

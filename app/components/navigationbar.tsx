@@ -26,10 +26,10 @@ export default function NavigationBar() {
 	return (
 		<nav className="relative z-[60]">
 			{/* navigation and open menu */}
-			<div className="grid h-16 grid-cols-3 items-center px-4 sm:px-6">
+			<div className="grid h-16 grid-cols-3 items-center px-4 sm:px-6 lg:px-10">
 				<button
 				type="button"
-				 className="flex h-11 w-11 items-center justify-start rounded-md text-2xl leading-none transition-colors hover:bg-zinc-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 sm:hidden"
+				 className="flex h-11 w-11 items-center justify-start rounded-md text-2xl leading-none transition-colors hover:bg-zinc-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 md:hidden"
 				aria-label={isMenuOpen ? "Close menu" : "Open menu"}
 				aria-expanded={isMenuOpen}
 				onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -41,11 +41,26 @@ export default function NavigationBar() {
 				</span>
 				</button>
 
-			<Link className="justify-self-center whitespace-nowrap text-2xl font-semibold" href="/">
+			<Link
+				className="justify-self-center whitespace-nowrap text-2xl font-semibold md:col-start-1 sm:justify-self-start"
+				href="/"
+			>
 				Liliana Erasmus
 			</Link>
 
-			
+			<div className="col-start-3 hidden items-center justify-end gap-8 md:flex" role="menubar">
+				{menuItems.map((item) => (
+					<Link
+						key={item.href}
+						href={item.href}
+						className="whitespace-nowrap text-lg font-medium transition-colors hover:text-zinc-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900"
+						role="menuitem"
+					>
+						{item.label}
+					</Link>
+				))}
+			</div>
+
 			</div>
 
 			<div
