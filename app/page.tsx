@@ -176,7 +176,7 @@ export default function BookCarousel() {
             >
               <div
                 ref={(el) => { coverRefs.current[i] = el; }}
-                className="book-cover flex h-full w-full justify-center outline shadow-lg"
+                className="book-cover flex h-full w-full justify-center  shadow-lg"
                 style={{ backgroundColor: book.color } as React.CSSProperties}
               >
                 <p className="whitespace-nowrap p-5 text-lg font-semibold text-black" style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}>

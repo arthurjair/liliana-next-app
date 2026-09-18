@@ -1,32 +1,37 @@
 
 export default function Footer() {
-  return <footer className="bg-black">
-      <div className="flex">
+  return <footer className="bg-black rounded-t-lg ">
+      <div className="flex pt-3 pl-5 gap-3">
         <div>
-         <p className="  text-sm text-white py-6 px-2">
-           <p className="mr-2 ">Books</p>
-           <p className="mr-2 ">About me</p>
+         <p className="  text-sm text-white py-1 lg:text-xl ">
+           Books
+          </p>
+          <p className="  text-sm text-white py-1 lg:text-xl ">
+           About Me
+          </p>
            
-         </p>
+         
         </div>
-        <div>
-          <p className="text-sm text-white py-6 px-2">
-            <p className="mr-2 ">LinkedIn</p>
-            <p className="mr-2 ">Contact</p>
+        <div className="pb-3 ">
+          <p className="  text-sm text-white py-1 px-2 lg:text-xl">
+           Contact
+          </p>
+          <p className="  text-sm text-white py-1 px-2 lg:text-xl">
+           LinkedIn
           </p>
         </div>
       </div>
 
       
         
-      <h1 className="text-white text-5xl font-bold px-2">Danki For your Curiosity!</h1>
-      <div className="flex items-center">
+      <h1 className="text-white text-5xl font-medium p-4 pl-5 lg:text-7xl">Danki for your Curiosity!</h1>
+      <div className="flex items-center justify-between w-full">
          <div>
-           <p className="text-white text-sm  px-4 py-3">Created by CUA Studio</p>
+           <p className="text-white text-sm px-5 py-3">Created by CUA Studio</p>
          </div>
         <div>
-        <a href="#top" className="block text-white text-sm underline px-4 py-3">
-            Go back up
+        <a href="#top" className="inline-flex items-center gap-1 text-white text-sm px-5 py-3 text-right">
+            Go back up <span aria-hidden="true" className="w-3 h-4 leading-none">↑</span>
          </a>
         </div>
       </div>
