@@ -1,4 +1,10 @@
 
+import localFont from "next/font/local";
+
+const janeAust = localFont({
+  src: "../fonts/JaneAust.ttf",
+});
+
 export default function Footer() {
   return <footer className="bg-black rounded-t-lg ">
       <div className="flex pt-3 pl-5 gap-3">
@@ -24,7 +30,9 @@ export default function Footer() {
 
       
         
-      <h1 className="text-white text-5xl font-medium p-4 pl-5 lg:text-7xl">Danki for your Curiosity!</h1>
+      <h1 className="p-4 pl-5 text-5xl font-medium text-white lg:text-7xl">
+        <span className={janeAust.className}>Danki</span> <br></br>for your Curiosity!
+      </h1>
       <div className="flex items-center justify-between w-full">
          <div>
            <p className="text-white text-sm px-5 py-3">Created by CUA Studio</p>

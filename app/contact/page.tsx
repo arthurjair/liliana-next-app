@@ -26,12 +26,12 @@ export default function ContactPage() {
 								</div>
 							</div>
 
-							<div className="grid gap-2">
+							<div className="grid gap-2 mt-4">
 								<label htmlFor="email" className="text-sm font-medium">Email</label>
 								<input id="email" name="email" type="email" autoComplete="email" required className="border-b border-black bg-transparent px-0 py-3 outline-none placeholder:text-stone-400 focus:border-stone-500" placeholder="you@example.com" />
 							</div>
 
-							<div className="grid gap-2">
+							<div className="grid gap-2 mt-4">
 								<label htmlFor="reason" className="text-sm font-medium">I&apos;m here for...</label>
 								<select id="reason" name="reason" required defaultValue="" className="border-b border-black bg-transparent px-0 py-3 outline-none focus:border-stone-500">
 									<option value="" disabled>Select an option</option>
@@ -42,7 +42,7 @@ export default function ContactPage() {
 								</select>
 							</div>
 
-							<div className="grid gap-2">
+							<div className="grid gap-2 mt-4">
 								<label htmlFor="message" className="text-sm font-medium">What should I know?</label>
 								<textarea id="message" name="message" rows={5} required className="resize-y border-b border-black bg-transparent px-0 py-3 outline-none placeholder:text-stone-400 focus:border-stone-500" placeholder="Tell me a little about your project or question..." />
 							</div>

@@ -1,7 +1,12 @@
 "use client";
 
 import Link from "next/link";
+import localFont from "next/font/local";
 import { useEffect, useState } from "react";
+
+const janeAust = localFont({
+	src: "../fonts/JaneAust.ttf",
+});
 
 const menuItems = [
 	{ label: "Books", href: "/books" },
@@ -20,8 +25,13 @@ export default function NavigationBar() {
 		};
 
 		document.addEventListener("keydown", closeMenuOnEscape);
-		return () => document.removeEventListener("keydown", closeMenuOnEscape);
-	}, []);
+		document.body.style.overflow = isMenuOpen ? "hidden" : "";
+
+		return () => {
+			document.removeEventListener("keydown", closeMenuOnEscape);
+			document.body.style.overflow = "";
+		};
+	}, [isMenuOpen]);
 
 	return (
 		<nav className="relative z-[60]">
@@ -42,7 +52,7 @@ export default function NavigationBar() {
 				</button>
 
 			<Link
-				className="justify-self-center whitespace-nowrap text-2xl font-semibold md:col-start-1 sm:justify-self-start"
+				className={`${janeAust.className} justify-self-center whitespace-nowrap text-2xl font-semibold md:col-start-1 sm:justify-self-start`}
 				href="/"
 			>
 				Liliana Erasmus
