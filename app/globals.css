@@ -33,6 +33,27 @@ body {
   scrollbar-width: none;
 }
 
+@keyframes indicator-float {
+  0%,
+  100% {
+    transform: translateY(-50%);
+  }
+
+  50% {
+    transform: translateY(calc(-50% - 8px));
+  }
+}
+
+.indicator-float {
+  animation: indicator-float 3.5s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .indicator-float {
+    animation: none;
+  }
+}
+
 .book-cover {
   transform: rotate(var(--book-rotate));
   transform-origin: bottom;

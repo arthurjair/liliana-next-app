@@ -9,9 +9,9 @@ const janeAust = localFont({
 });
 
 const menuItems = [
-	{ label: "Books", href: "/books" },
-	{ label: "About me", href: "/about" },
-	{ label: "Contact", href: "/contact" },
+	{ label: "BOOKS", href: "/books" },
+	{ label: "ABOUT ME", href: "/about" },
+	{ label: "CONTACT", href: "/contact" },
 ];
 
 export default function NavigationBar() {

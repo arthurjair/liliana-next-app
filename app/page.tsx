@@ -1,16 +1,20 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import Link from "next/link";
 import IndexDragIndicator from "./components/indexdragindicator";
 
 const books = [
-  { title: "Zap Zap Zzziennng!", year: 2025, color: "#EAC342", rotate: 10, mdRotate: 6, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[98%]" },
-  { title: "Aza and the Magic Doors", year: 2024, color: "#2E9EFF", rotate: 0, gapAfter: 1.5, mdClass: " h-[98%] md:w-23 md:h-[95%]" },
-  { title: "Book Three", year: 2023, color: "#A4C639", rotate: -6, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[75%]" },
-  { title: "Book Four", year: 2022, color: "#EAC342", rotate: 6.5, gapAfter: 1.5, mdClass: "h-[92%] md:w-23 md:h-[85%]" },
-  { title: "Book Five", year: 2021, color: "#2E9EFF", rotate: 0, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[93%]" },
-  { title: "Book Six", year: 2021, color: "#2E9E", rotate: -5, gapAfter: 1.5, mdClass: "md:w-23 md:h-[75%]" },
-  { title: "Book Seven", year: 2021, color: "#23c5", rotate: 5, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[85%]" },
+  { slug: "Zap-Zap-ZZZIENNG", title: "Zap Zap Zzziennng!", year: 2025, color: "#EAC342", rotate: 10, mdRotate: 6, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[98%]" },
+  { slug: "Aza-and-the-magic-doors", title: "Aza and the Magic Doors", year: 2024, color: "#2E9EFF", rotate: 0, gapAfter: 1.5, mdClass: " h-[98%] md:w-23 md:h-[95%]" },
+  { slug: "the-murf", title: "The Murf", year: 2023, color: "#A4C639", rotate: -6, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[75%]" },
+  { slug: "Zie-wie-je-bent", title: "Be who you are, become what you want to be", year: 2022, color: "#F8EC62", rotate: 6.5, gapAfter: 1.5, mdClass: "h-[92%] md:w-23 md:h-[85%]" },
+  { slug: "Schelpeneiland", title: "Shell Island", year: 2021, color: "#56C3EE", rotate: 0, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[93%]" },
+  { slug: "Friends-Everywhere", title: "Friends Everywhere", year: 2021, color: "#E789B6", rotate: -5, gapAfter: 1.5, mdClass: "md:w-23 md:h-[75%]" },
+  { slug: "What-Does-Kiwi-Want-Now", title: "What does Kiwi want now?", year: 2021, color: "#FE7C02", rotate: 5, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[85%]" },
+  { slug: "Ghosts-and-Monsters-Everywhere", title: "Ghosts and Monsters Everywhere", year: 2021, color: "#CE181B", rotate: 0, gapAfter: 2, mdClass: "h-[98%] md:w-23 md:h-[97%]" },
+  { slug: "Grandmas-and-Grandpas-Everywhere", title: "Grandmas and Grandpas Everywhere", year: 2021, color: "#96D4E3", rotate: -5, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[92%]" },
+  { slug: "A-Ray-on-the-Hook", title: "A Ray on the Hook", year: 2021, color: "#FAF292", rotate: 5, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[85%]" },
 ];
 
 const MOBILE_BOOK_WIDTH_REM = 5.5;
@@ -38,6 +42,7 @@ export default function BookCarousel() {
   const wrapperRefs = useRef<(HTMLDivElement | null)[]>([]);
   const coverRefs = useRef<(HTMLDivElement | null)[]>([]);
   const isDraggingRef = useRef(false);
+  const hasMovedRef = useRef(false);
   const dragStartXRef = useRef(0);
   const dragStartScrollLeftRef = useRef(0);
 
@@ -121,6 +126,7 @@ export default function BookCarousel() {
     const el = carouselRef.current;
     if (!el) return;
     isDraggingRef.current = true;
+    hasMovedRef.current = false;
     dragStartXRef.current = e.clientX;
     dragStartScrollLeftRef.current = el.scrollLeft;
     el.style.scrollSnapType = "none";
@@ -131,6 +137,9 @@ export default function BookCarousel() {
     if (!isDraggingRef.current) return;
     const el = carouselRef.current;
     if (!el) return;
+    if (Math.abs(e.clientX - dragStartXRef.current) > 6) {
+      hasMovedRef.current = true;
+    }
     el.scrollLeft = dragStartScrollLeftRef.current - (e.clientX - dragStartXRef.current);
   };
 
@@ -145,9 +154,12 @@ export default function BookCarousel() {
       <IndexDragIndicator opacity={stickerOpacity} />
 
       <main className="relative flex h-[calc(100dvh-4rem)] min-h-0 w-full flex-col overflow-hidden overscroll-none bg-white">
-        <p className="pointer-events-none absolute inset-x-0 top-1/3 z-0 select-none text-center font-serif italic text-6xl lg:text-9xl text-black/90 whitespace-nowrap">
-          Liliana Erasmus
-        </p>
+        <img
+          src="/intro-gif.gif"
+          alt=""
+          aria-hidden="true"
+          className="pointer-events-none absolute inset-x-0 top-1/2 z-0 mx-auto w-3/4 w-4xl lg:w-7xl lg:top-1/2 -translate-y-1/2 object-contain"
+        />
 
         <div
           ref={carouselRef}
@@ -165,7 +177,7 @@ export default function BookCarousel() {
           onPointerCancel={endDrag}
           className="relative z-10 pb-1 px-.5 flex min-h-0 w-full flex-1 items-end overflow-x-auto overflow-y-hidden snap-x snap-mandatory  scrollbar-hide [container-type:inline-size] cursor-grab active:cursor-grabbing select-none"
         >
-          <div ref={spacerRef} aria-hidden className="shrink-0 snap-start w-11 md:w-80 lg:w-180 xl:w-300" />
+          <div ref={spacerRef} aria-hidden className="shrink-0 snap-start w-11 md:w-80 lg:w-150 xl:w-230" />
 
           {books.map((book, i) => (
             <div
@@ -174,15 +186,37 @@ export default function BookCarousel() {
               className={`relative h-[99%] shrink-0 snap-center w-[var(--mobile-book-width)] md:w-20 ${book.mdClass ?? ""}`}
               style={{ "--mobile-book-width": `${MOBILE_BOOK_WIDTH_REM}rem` } as React.CSSProperties}
             >
-              <div
+              {book.slug ? (
+                <Link
+                  href={`/books/${book.slug}`}
+                  className="block h-full w-full"
+                  onClick={(event) => {
+                    if (hasMovedRef.current) {
+                      event.preventDefault();
+                    }
+                  }}
+                >
+                  <div
+                    ref={(el) => { coverRefs.current[i] = el; }}
+                    className="book-cover flex h-full w-full justify-center shadow-lg"
+                    style={{ backgroundColor: book.color } as React.CSSProperties}
+                  >
+                    <p className="whitespace-nowrap p-5 text-lg font-semibold text-black" style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}>
+                      {book.title} <span className="text-sm font-normal">{book.year}</span>
+                    </p>
+                  </div>
+                </Link>
+              ) : (
+                <div
                 ref={(el) => { coverRefs.current[i] = el; }}
-                className="book-cover flex h-full w-full justify-center  shadow-lg"
+                className="book-cover flex h-full w-full justify-center shadow-lg"
                 style={{ backgroundColor: book.color } as React.CSSProperties}
               >
                 <p className="whitespace-nowrap p-5 text-lg font-semibold text-black" style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}>
                   {book.title} <span className="text-sm font-normal">{book.year}</span>
                 </p>
-              </div>
+                </div>
+              )}
             </div>
           ))}
         </div>
