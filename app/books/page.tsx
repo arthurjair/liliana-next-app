@@ -37,13 +37,13 @@ export default function BooksPage() {
       slug: "Friends-Everywhere",
       title: "FRIENDS EVERYWHERE",
       image: "/books/Friends-everywhere.webp",
-      blurb: "A poetic journey through memory, distance, and belonging.",
+      blurb: " A bilingual storybook: Dutch and Papiamento. This 2018 children's book gift from Aruba features 15 stories and poems by writers from Aruba, Curaçao, Suriname, Bonaire, and the Netherlands. With illustrations by Vanessa Paulina from Aruba. ",
     },
     {
       slug: "What-Does-Kiwi-Want-Now",
       title: "WHAT DOES KIWI WANT NOW?",
       image: "/books/Kiwi.webp",
-      blurb: "A poetic journey through memory, distance, and belonging.",
+      blurb: "Kiwi always gets what he wants. Everything... except the one thing he desires most: the Tri-Fox GX10! His dad has a Tri-Fox, his mom has one, and even his friends at school do. But is this popular gadget really what Kiwi needs?",
     },
     {
       slug: "Ghosts-and-Monsters-Everywhere",
@@ -61,25 +61,25 @@ export default function BooksPage() {
       slug: "A-Ray-on-the-Hook",
       title: "A RAY ON THE HOOK",
       image: "/books/A-Ray.jpg",
-      blurb: "A poetic journey through memory, distance, and belonging.",
+      blurb: "Jim gets to go on the boat. His uncle’s boat is called ‘De Haak’. A boat with a name? That’s strange. But there’s more...",
     },
     {
       slug: "On-an-Enchanted-Island",
       title: "ON AN ENCHANTED ISLAND",
       image: "/books/On-an-Enchanted-Island.webp",
-      blurb: "A poetic journey through memory, distance, and belonging.",
+      blurb: "A collection of five fairy tales in Papiamento, published in book form and as Kamishibai storytelling cards, commissioned by the Aruba Department of Education and the FDA.",
     },
     {
       slug: "Do-Not-Touch",
       title: "DO NOT TOUCH!",
       image: "/books/Do-Not-Touch.webp",
-      blurb: "A poetic journey through memory, distance, and belonging.",
+      blurb: "Rai has a friend; his name is Panda. They have a lot of fun together. But Panda has a serious problem. Panda is late for everything... Everything! Rai has to come up with a plan.",
     },
     {
       slug: "Antilla",
       title: "ANTILLA",
       image: "/books/Antilla.jpg",
-      blurb: "A poetic journey through memory, distance, and belonging.",
+      blurb: "A work of historical fantasy centered on one of the Caribbean’s major shipwrecks: the SS Antilla, a German cargo ship scuttled by its own crew just off the coast of Aruba during World War II. The vibrant underwater photographs and illustrations by Swiss visual artist Moritz Ebinger perfectly complement this imaginative, multilingual book, which encourages young readers to explore Aruba’s history.",
     },
     {
       slug: "The-Flashlight",
@@ -91,55 +91,55 @@ export default function BooksPage() {
       slug: "Nano-y-nena",
       title: "NANO Y NENA",
       image: "/books/Nano-y-nena.jpg",
-      blurb: "A poetic journey through memory, distance, and belonging.",
+      blurb: "Nano the Dwarf feels like something is missing from his life. When he sets out to find that something, he gets lost but not for long.",
     },
     {
       slug: "Rima-Rond-Aruba-su-Status-Aparte",
       title: "RIMA ROND ARUBA SU STATUS APARTE",
       image: "/books/Rhyme-around.jpg",
-      blurb: "A poetic journey through memory, distance, and belonging.",
+      blurb: "A collection of children's poems, raps, and songs (Volume IV) in the native language of Papiamento, commemorating 25 years of Aruba's Status Aparte (independent status and autonomy within the Kingdom of the Netherlands).",
     },
     {
       slug: "Sigui-Rima-Rond-di-Aruba",
       title: "SIGUI RIMA ROND DI ARUBA",
       image: "/books/Keep-rhyming.jpg",
-      blurb: "A poetic journey through memory, distance, and belonging.",
+      blurb: "Collection of children's poems, raps, and songs (Volume III) in the native language, Papiamento.",
     },
     {
       slug: "It-was-Big",
       title: "IT WAS BIG!",
       image: "/books/It-Was-Big!.jpg",
-      blurb: "A poetic journey through memory, distance, and belonging.",
+      blurb: "Story about a girl's friendship with a piglet and learning about the true meaning of friendship #leveled reading books #dyslexia",
     },
     {
       slug: "Animal-in-Distress",
       title: "ANIMAL IN DISTRESS",
       image: "/books/Animal-in-Distress.jpg",
-      blurb: "A poetic journey through memory, distance, and belonging.",
+      blurb: "A story about a boy who goes on vacation to Aruba and his urge to rescue an abused dog.",
     },
     {
       slug: "My-Party",
       title: "MY PARTY",
       image: "/books/My-Party.jpg",
-      blurb: "A poetic journey through memory, distance, and belonging.",
+      blurb: "About a girl, Fleur, who organizes her own birthday party and everything that can go wrong on the most special day of her life.",
     },
     {
       slug: "Nano-e-Enano",
       title: "NANO E ENANO",
       image: "/books/Nano-e-enano.jpg",
-      blurb: "A poetic journey through memory, distance, and belonging.",
+      blurb: "This richly illustrated audio and storybook is a collection of radio plays in Papiamento and Dutch about the adventures of Nano (an Aruban dwarf) and his animal friends.",
     },
     {
       slug: "Hopus",
       title: "HOPUS",
       image: "/books/Hopus.jpg",
-      blurb: "A poetic journey through memory, distance, and belonging.",
+      blurb: "A picture book about a curious, magical white rabbit who is tired of being stuck in a magician’s hat and longs to discover the world outside. One day, he gets his chance and is surprised to find that life beyond the hat the only world he has ever known is unfamiliar and fascinating.",
     },
     {
       slug: "My-First-ABC's",
       title: "MY FIRST ABC'S",
       image: "/books/My-First-ABC's.jpg",
-      blurb: "A poetic journey through memory, distance, and belonging.",
+      blurb: "Aruba's first alphabet book",
     },
 
 
@@ -148,7 +148,7 @@ export default function BooksPage() {
   return (
     <>
       <main className="p-4 sm:p-6">
-        <h1 className="mb-6 text-4xl font-bold">All Books</h1>
+        <h1 className="mb-6 text-sm uppercase tracking-[0.2em] text-stone-500">All Books</h1>
         <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-5">
           {books.map((book) => (
             <Link href={`/books/${book.slug}`} key={book.slug} className="block">
@@ -159,10 +159,10 @@ export default function BooksPage() {
                   className="h-[75%] w-[70%] object-contain transition duration-300 group-hover:scale-105"
                 />
 
-                <div className="absolute inset-0 flexitems-center justify-center bg-[#F6EF7A] opacity-0 transition duration-300 group-hover:opacity-100">
-                  <div className="p-5 text-black sm:px-6">
-                    <h3 className="text-lg  font-medium ">{book.title}</h3>
-                    <p className="mt-1 text-[10px] leading-relaxed sm:mt-2 sm:text-sm">{book.blurb}</p>
+                <div className="absolute inset-0 flex items-start justify-center overflow-x-hidden overflow-y-auto bg-[#F6EF7A] p-5 opacity-0 transition duration-300 group-hover:opacity-100 sm:px-6">
+                  <div className="min-w-0 max-w-full break-words text-black">
+                    <h3 className="text-2xl font-semibold lg:text-4xl">{book.title}</h3>
+                    <p className="mt-1 text-sm leading-relaxed sm:mt-2 sm:text-sm lg:text-lg">{book.blurb}</p>
                   </div>
                 </div>
               </div>

@@ -22,7 +22,7 @@ export default async function BookPage({ params }: BookPageProps) {
   return (
     <>
       <main className="flex-1 px-4 py-8 sm:px-6 lg:px-12">
-        <Link href="/books" className="text-sm underline underline-offset-4">
+        <Link href="/books" className="text-sm underline underline-offset-4 text-sm uppercase tracking-[0.2em] text-stone-500">
           Back to all books
         </Link>
 
@@ -36,10 +36,8 @@ export default async function BookPage({ params }: BookPageProps) {
           </div>
 
           <div className="max-w-xl">
-            <p className="mb-4 text-sm uppercase tracking-[0.2em] text-stone-500">
-              Book
-            </p>
-            <h1 className="text-4xl font-medium leading-tight sm:text-6xl">
+            
+            <h1 className="text-4xl font-medium leading-tight sm:text-6xl lg:text-7xl lg:font-medium">
               {book.title}
             </h1>
             <p className="mt-8 text-lg leading-relaxed text-stone-700">
@@ -50,7 +48,7 @@ export default async function BookPage({ params }: BookPageProps) {
                 href={book.buyUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-8 inline-block bg-black px-6 py-3 text-sm text-white transition-opacity hover:opacity-70"
+                className="mt-8 inline-block bg-black px-6 py-3 rounded-3xl flex  bg-black px-8 py-3 text-sm text-white transition-opacity hover:opacity-70"
               >
                 Buy Here
               </a>

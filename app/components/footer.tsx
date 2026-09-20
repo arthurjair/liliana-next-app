@@ -1,5 +1,6 @@
 
 import localFont from "next/font/local";
+import Link from "next/link";
 
 const janeAust = localFont({
   src: "../fonts/JaneAust.ttf",
@@ -9,22 +10,27 @@ export default function Footer() {
   return <footer className="bg-black rounded-t-lg ">
       <div className="flex pt-3 pl-5 gap-3">
         <div>
-         <p className="  text-sm text-white py-1 lg:text-xl ">
+         <Link href="/books" className="block text-sm text-white py-1 lg:text-xl">
            Books
-          </p>
-          <p className="  text-sm text-white py-1 lg:text-xl ">
+          </Link>
+          <Link href="/about" className="block text-sm text-white py-1 lg:text-xl">
            About Me
-          </p>
+          </Link>
            
          
         </div>
         <div className="pb-3 ">
-          <p className="  text-sm text-white py-1 px-2 lg:text-xl">
+          <Link href="/contact" className="block text-sm text-white py-1 px-2 lg:text-xl">
            Contact
-          </p>
-          <p className="  text-sm text-white py-1 px-2 lg:text-xl">
+          </Link>
+          <a
+            href="https://www.linkedin.com/in/lilianaerasmus/"
+            target="_blank"
+            rel="noreferrer"
+            className="block text-sm text-white py-1 px-2 lg:text-xl"
+          >
            LinkedIn
-          </p>
+          </a>
         </div>
       </div>
 

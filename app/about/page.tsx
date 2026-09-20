@@ -23,7 +23,7 @@ export default function AboutPage() {
               />
             </div>
             <div className="flex justify-center items-center ">
-             <p className="mt-6  text-lg leading-relaxed text-stone-700">
+             <p className="mt-6 w-100 text-center md:text-left text-lg lg:text-2xl leading-relaxed text-stone-700">
                I am a passionate author and illustrator, dedicated to bringing stories to life through my words and artwork. With a love for storytelling and a keen eye for detail, I strive to create captivating experiences for readers of all ages.
              </p>
             </div>

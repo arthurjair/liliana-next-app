@@ -95,9 +95,12 @@ export default function NavigationBar() {
 							{item.label}
 						</Link>
 					))}
-                    <div>
-                        
-                    </div>
+					<img
+						src="/nav-gif.gif"
+						alt=""
+						aria-hidden="true"
+						className="h-auto t w-50 object-contain"
+					/>
 				</div>
 			</div>
 		</nav>
