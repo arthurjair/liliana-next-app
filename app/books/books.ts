@@ -1,0 +1,171 @@
+export type Book = {
+  slug: string;
+  title: string;
+  image: string;
+  blurb: string;
+  buyUrl: string;
+};
+
+export const books: Book[] = [
+  {
+    slug: "Zap-Zap-ZZZIENNG",
+    title: "Zap Zap Zzzienng!",
+    image: "/books/Zap.webp",
+    blurb: "A poetic journey through memory, distance, and belonging.",
+    buyUrl: "https://boekwinkel.levendiguitgever.nl/home/171-de-avonturen-van-e-aventuranan-di-chispito.html",
+  },
+  {
+    slug: "Aza-and-the-magic-doors",
+    title: "Aza and the Magic Doors",
+    image: "/books/Aza.webp",
+    blurb: "For Aza, reading is no fun. She always has to behave herself in the library. Books with pictures are okay, I suppose. But books with lots of text... brrr.. But when Aza discovers a magical book, she is transported to a world of adventure and excitement. She meets new friends, learns about different cultures, and discovers the power of imagination.",
+    buyUrl: "https://boekwinkel.levendiguitgever.nl/home/167-aza-y-e-portanan-magico-aza-en-de-magische-deuren-.html",
+  },
+  {
+    slug: "the-murf",
+    title: "The Murf",
+    image: "/books/The-murf.webp",
+    blurb: "Liza lives on an island and talks to wild animals. Her neighbor Tom doesn't believe a word of it.But he hasn't lived on the island for very long. When Liza tries to rescue a stray dog, Tom and his poodle Desie help out. Can Liza tame this rascal?",
+    buyUrl: "https://www.zwijsen.nl/product/de-murf-9789048752058/",
+  },
+  {
+    slug: "Zie-wie-je-bent",
+    title: "Be who you are, become who you want to be",
+    image: "/books/Zijn-wie-je.webp",
+    blurb: "A poetic journey through memory, distance, and belonging.",
+    buyUrl: "https://boekwinkel.levendiguitgever.nl/home/122-zijn-wie-je-bent-worden-wat-je-wil.html",
+  },
+  {
+    slug: "Schelpeneiland",
+    title: "Shell Island",
+    image: "/books/Schelpeneiland.webp",
+    blurb: "A poetic journey through memory, distance, and belonging.",
+    buyUrl: "",
+  },
+  {
+    slug: "Friends-Everywhere",
+    title: "Friends Everywhere",
+    image: "/books/Friends-everywhere.webp",
+    blurb: "A poetic journey through memory, distance, and belonging.",
+    buyUrl: "",
+  },
+  {
+    slug: "What-Does-Kiwi-Want-Now",
+    title: "What Does Kiwi Want Now?",
+    image: "/books/Kiwi.webp",
+    blurb: "A poetic journey through memory, distance, and belonging.",
+    buyUrl: "",
+  },
+  {
+    slug: "Ghosts-and-Monsters-Everywhere",
+    title: "Ghosts and Monsters Everywhere",
+    image: "/books/Ghosts-monsters.webp",
+    blurb: "A poetic journey through memory, distance, and belonging.",
+    buyUrl: "https://boekwinkel.levendiguitgever.nl/verhalenboeken/45-overal-monsters-en-spoken.html",
+  },
+  {
+    slug: "Grandmas-and-Grandpas-Everywhere",
+    title: "Grandmas and Grandpas Everywhere",
+    image: "/books/Grandmas-grandpas.webp",
+    blurb: "A poetic journey through memory, distance, and belonging.",
+    buyUrl: "https://boekwinkel.levendiguitgever.nl/verhalenboeken/43-overal-opa-s-en-oma-s.html",
+  },
+  {
+    slug: "A-Ray-on-the-Hook",
+    title: "A Ray on the Hook",
+    image: "/books/A-Ray.jpg",
+    blurb: "A poetic journey through memory, distance, and belonging.",
+    buyUrl: "",
+  },
+  {
+    slug: "On-an-Enchanted-Island",
+    title: "On an Enchanted Island",
+    image: "/books/On-an-Enchanted-Island.webp",
+    blurb: "A poetic journey through memory, distance, and belonging.",
+    buyUrl: "",
+  },
+  {
+    slug: "Do-Not-Touch",
+    title: "Do Not Touch!",
+    image: "/books/Do-Not-Touch.webp",
+    blurb: "A poetic journey through memory, distance, and belonging.",
+    buyUrl: "",
+  },
+  {
+    slug: "Antilla",
+    title: "Antilla",
+    image: "/books/Antilla.jpg",
+    blurb: "A poetic journey through memory, distance, and belonging.",
+    buyUrl: "",
+  },
+  {
+    slug: "The-Flashlight",
+    title: "The Flashlight",
+    image: "/books/The-Flashlight.jpg",
+    blurb: "A poetic journey through memory, distance, and belonging.",
+    buyUrl: "https://www.bol.com/nl/nl/p/spannend-de-knijpkat/9200000000616144/?cid=1789807190162-5817123844432",
+  },
+  {
+    slug: "Nano-y-nena",
+    title: "Nano & Nena",
+    image: "/books/Nano-y-nena.jpg",
+    blurb: "A poetic journey through memory, distance, and belonging.",
+    buyUrl: "",
+  },
+  {
+    slug: "Rima-Rond-Aruba-su-Status-Aparte",
+    title: "Rima Rond Aruba su Status Aparte",
+    image: "/books/Rhyme-around.jpg",
+    blurb: "A poetic journey through memory, distance, and belonging.",
+    buyUrl: "",
+  },
+  {
+    slug: "Sigui-Rima-Rond-di-Aruba",
+    title: "Sigui Rima Rond di Aruba",
+    image: "/books/Keep-rhyming.jpg",
+    blurb: "A poetic journey through memory, distance, and belonging.",
+    buyUrl: "",
+  },
+  {
+    slug: "It-was-Big",
+    title: "It was Big!",
+    image: "/books/It-Was-Big!.jpg",
+    blurb: "A poetic journey through memory, distance, and belonging.",
+    buyUrl: "https://www.bol.com/nl/nl/p/het-was-big/1001004006481253/?cid=1789807218296-9914372547150",
+  },
+  {
+    slug: "Animal-in-Distress",
+    title: "Animal in Distress",
+    image: "/books/Animal-in-Distress.jpg",
+    blurb: "A poetic journey through memory, distance, and belonging.",
+    buyUrl: "",
+  },
+  {
+    slug: "My-Party",
+    title: "My Party",
+    image: "/books/My-Party.jpg",
+    blurb: "A poetic journey through memory, distance, and belonging.",
+    buyUrl: "",
+  },
+  {
+    slug: "Nano-e-Enano",
+    title: "Nano e Enano",
+    image: "/books/Nano-e-enano.jpg",
+    blurb: "A poetic journey through memory, distance, and belonging.",
+    buyUrl: "",
+  },
+  {
+    slug: "Hopus",
+    title: "Hopus",
+    image: "/books/Hopus.jpg",
+    blurb: "A poetic journey through memory, distance, and belonging.",
+    buyUrl: "https://www.bol.com/nl/nl/p/hopus/9300000166334785/?cid=1789807314190-9543686988702",
+  },
+  {
+    slug: "My-First-ABC's",
+    title: "My First ABC's",
+    image: "/books/My-First-ABC's.jpg",
+    blurb: "A poetic journey through memory, distance, and belonging.",
+    buyUrl: "",
+  },
+];
