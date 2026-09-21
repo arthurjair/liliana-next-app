@@ -4,9 +4,15 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import localFont from "next/font/local";
 import IndexDragIndicator from "./components/indexdragindicator";
+import { Libre_Caslon_Text } from "next/font/google";
 
 const janeAust = localFont({
   src: "./fonts/JaneAust.ttf",
+});
+
+const LibreCaslonText = Libre_Caslon_Text({
+  weight: "400",
+  subsets: ["latin"],
 });
 
 const books = [
@@ -203,8 +209,11 @@ export default function BookCarousel() {
                     className="book-cover flex h-full w-full justify-center shadow-lg"
                     style={{ backgroundColor: book.color } as React.CSSProperties}
                   >
-                    <p className="whitespace-nowrap p-5 text-lg font-semibold text-black" style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}>
-                      {book.title} <span className="text-sm font-normal">{book.year}</span>
+                    <p
+                      className={`${LibreCaslonText.className} whitespace-nowrap p-5 text-lg md:text-xl text-black`}
+                      style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+                    >
+                      {book.title} <span className="text-sm font-bold">{book.year}</span>
                     </p>
                   </div>
                 </Link>
@@ -214,7 +223,10 @@ export default function BookCarousel() {
                 className="book-cover flex h-full w-full justify-center shadow-lg"
                 style={{ backgroundColor: book.color } as React.CSSProperties}
               >
-                <p className="whitespace-nowrap p-5 text-lg font-semibold text-black" style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}>
+                <p
+                  className={`${LibreCaslonText.className} whitespace-nowrap p-5 text-lg text-black`}
+                  style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
+                >
                   {book.title} <span className="text-sm font-normal">{book.year}</span>
                 </p>
                 </div>
