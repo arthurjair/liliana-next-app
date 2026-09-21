@@ -8,7 +8,7 @@ export default function ContactPage() {
 					<p className="text-sm uppercase tracking-[0.2em] text-stone-500">Contact</p>
 					<div className="mt-4 grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
 						<div>
-							<h1 className="text-8xl  font-medium leading-tight ">Connect?</h1>
+							<h1 className="md:text-8xl text-6xl font-medium leading-tight ">Connect?</h1>
 							<p className="mt-6 max-w-md text-lg leading-relaxed text-stone-700">
 								Feeling interested or inspired by some of my work? Looking for more information? Feel free to send me a message.
 							</p>
