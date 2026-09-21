@@ -141,6 +141,12 @@ export default function BooksPage() {
       image: "/books/My-First-ABC's.jpg",
       blurb: "Aruba's first alphabet book",
     },
+    {
+      slug: "Rhyms-Around-Arubas",
+      title: "RHYMES AROUND ARUBA",
+      image: "/books/Rhymes-Around-Aruba.jpg",
+      blurb: "My very first (published) book. Collection of children's poems, raps, and songs (volume I) in mother tongue Papiamento.",
+    },
 
 
   ];

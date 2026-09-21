@@ -81,8 +81,8 @@ export const books: Book[] = [
     slug: "On-an-Enchanted-Island",
     title: "On an Enchanted Island",
     image: "/books/On-an-Enchanted-Island.webp",
-    blurb: "A poetic journey through memory, distance, and belonging.",
-    buyUrl: "A collection of five fairy tales in Papiamento, published in book form and as Kamishibai storytelling cards, commissioned by the Aruba Department of Education and the FDA.",
+    blurb: "A collection of five fairy tales in Papiamento, published in book form and as Kamishibai storytelling cards, commissioned by the Aruba Department of Education and the FDA.",
+    buyUrl: "",
   },
   {
     slug: "Do-Not-Touch",
@@ -166,6 +166,13 @@ export const books: Book[] = [
     title: "My First ABC's",
     image: "/books/My-First-ABC's.jpg",
     blurb: "Aruba's first alphabet book",
+    buyUrl: "",
+  },
+  {
+    slug: "Rhyms-Around-Arubas",
+    title: "Rhymes Around Aruba",
+    image: "/books/Rhymes-Around-Aruba.jpg",
+    blurb: "My very first (published) book. Collection of children's poems, raps, and songs (volume I) in mother tongue Papiamento.",
     buyUrl: "",
   },
 ];
