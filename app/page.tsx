@@ -4,6 +4,7 @@ import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
 import localFont from "next/font/local";
 import { Libre_Caslon_Text } from "next/font/google";
+import IndexDragIndicator from "./components/indexdragindicator";
 
 const janeAust = localFont({
   src: "./fonts/JaneAust.ttf",
@@ -44,8 +45,11 @@ function targetAngle(book: (typeof books)[number]) {
 }
 
 export default function BookCarousel() {
+  const [stickerOpacity, setStickerOpacity] = useState(1);
+
   const carouselRef = useRef<HTMLDivElement>(null);
   const spacerRef = useRef<HTMLDivElement>(null);
+  const baselineScrollLeft = useRef(0);
   const wrapperRefs = useRef<(HTMLDivElement | null)[]>([]);
   const coverRefs = useRef<(HTMLDivElement | null)[]>([]);
 
@@ -118,10 +122,16 @@ export default function BookCarousel() {
     const el = carouselRef.current;
     if (!el) return;
     el.scrollTo({ left: 0 });
+    requestAnimationFrame(() => {
+      baselineScrollLeft.current = el.scrollLeft;
+      setStickerOpacity(1);
+    });
   }, []);
 
   return (
     <>
+      <IndexDragIndicator opacity={stickerOpacity} />
+
       <main className="relative flex h-[calc(100dvh-4rem)] min-h-0 w-full flex-col overflow-hidden overscroll-none bg-white">
         <p className={`${janeAust.className} pointer-events-none absolute inset-x-0 top-1/2 z-0 hidden -translate-y-1/2 select-none whitespace-nowrap text-center text-black/90 md:block md:text-6xl lg:text-9xl`}>
           Liliana Erasmus
@@ -129,6 +139,16 @@ export default function BookCarousel() {
 
         <div
           ref={carouselRef}
+          onScroll={(event) => {
+            const container = event.currentTarget;
+            const delta = container.scrollLeft - baselineScrollLeft.current;
+            if (delta <= 0) {
+              setStickerOpacity(1);
+              return;
+            }
+            const fadeDistance = (spacerRef.current?.offsetWidth ?? 180) * 0.5;
+            setStickerOpacity(Math.max(0, 1 - delta / fadeDistance));
+          }}
           className="relative z-10 pb-1 px-.5 flex min-h-0 w-full flex-1 items-end overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hide [container-type:inline-size]"
         >
           <div ref={spacerRef} aria-hidden className="shrink-0 snap-start w-11 md:w-80 lg:w-150 xl:w-230" />
