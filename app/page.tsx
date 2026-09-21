@@ -2,7 +2,12 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
+import localFont from "next/font/local";
 import IndexDragIndicator from "./components/indexdragindicator";
+
+const janeAust = localFont({
+  src: "./fonts/JaneAust.ttf",
+});
 
 const books = [
   { slug: "Zap-Zap-ZZZIENNG", title: "Zap Zap Zzziennng!", year: 2025, color: "#EAC342", rotate: 10, mdRotate: 6, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[98%]" },
@@ -154,12 +159,9 @@ export default function BookCarousel() {
       <IndexDragIndicator opacity={stickerOpacity} />
 
       <main className="relative flex h-[calc(100dvh-4rem)] min-h-0 w-full flex-col overflow-hidden overscroll-none bg-white">
-        <img
-          src="/intro-gif.gif"
-          alt=""
-          aria-hidden="true"
-          className="pointer-events-none absolute inset-x-0 top-1/2 z-0 mx-auto w-3/4 w-4xl lg:w-7xl lg:top-1/2 -translate-y-1/2 object-contain"
-        />
+        <p className={`${janeAust.className} pointer-events-none absolute inset-x-0 top-1/2 z-0 hidden -translate-y-1/2 select-none whitespace-nowrap text-center text-black/90 md:block md:text-6xl lg:text-9xl`}>
+          Liliana Erasmus
+        </p>
 
         <div
           ref={carouselRef}

@@ -36,7 +36,7 @@ export default function NavigationBar() {
 	return (
 		<nav className="relative z-[60]">
 			{/* navigation and open menu */}
-			<div className="grid h-16 grid-cols-3 items-center px-4 sm:px-6 lg:px-10">
+			<div className="grid h-16 grid-cols-3 items-center px-4 sm:px-6 lg:px-10 lg:mb-7">
 				<button
 				type="button"
 				 className="flex h-11 w-11 items-center justify-start rounded-md text-2xl leading-none transition-colors hover:bg-zinc-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 md:hidden"
@@ -55,7 +55,12 @@ export default function NavigationBar() {
 				className={`${janeAust.className} justify-self-center whitespace-nowrap text-2xl font-semibold md:col-start-1 sm:justify-self-start`}
 				href="/"
 			>
-				Liliana Erasmus
+				<span className="md:hidden">Liliana Erasmus</span>
+				<img
+					src="/nav-gif.gif"
+					alt="Liliana Erasmus"
+					className="hidden h-auto w-32 object-contain md:block"
+				/>
 			</Link>
 
 			<div className="col-start-3 hidden items-center justify-end gap-8 md:flex" role="menubar">

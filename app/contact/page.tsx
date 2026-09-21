@@ -14,7 +14,7 @@ export default function ContactPage() {
 							</p>
 						</div>
 
-						<form action="https://formspree.io/f/YOUR_FORM_ID" method="post">
+						<form action="https://formspree.io/f/mdekeegy" method="post">
 							<div className="grid gap-6 sm:grid-cols-2">
 								<div className="grid gap-2">
 									<label htmlFor="first-name" className="text-sm font-medium">First name</label>
