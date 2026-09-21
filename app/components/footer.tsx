@@ -8,31 +8,7 @@ const janeAust = localFont({
 
 export default function Footer() {
   return <footer className="bg-black rounded-t-lg ">
-      <div className="flex pt-3 pl-5 gap-3">
-        <div>
-         <Link href="/books" className="block text-sm text-white py-1 lg:text-xl">
-           Books
-          </Link>
-          <Link href="/about" className="block text-sm text-white py-1 lg:text-xl">
-           About Me
-          </Link>
-           
-         
-        </div>
-        <div className="pb-3 ">
-          <Link href="/contact" className="block text-sm text-white py-1 px-2 lg:text-xl">
-           Contact
-          </Link>
-          <a
-            href="https://www.linkedin.com/in/lilianaerasmus/"
-            target="_blank"
-            rel="noreferrer"
-            className="block text-sm text-white py-1 px-2 lg:text-xl"
-          >
-           LinkedIn
-          </a>
-        </div>
-      </div>
+      
 
       
         

@@ -6,28 +6,11 @@ export default function ContactPage() {
 			<main className="flex-1 px-4 py-10 sm:px-6 lg:px-12">
 				<div className="mx-auto max-w-6xl">
 					<p className="text-sm uppercase tracking-[0.2em] text-stone-500">Contact</p>
-					<div className="mt-4 grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
+					<div className="mt-0 grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
 						<div>
-							<h1 className="md:text-8xl text-6xl font-medium leading-tight ">Connect?</h1>
+							<h1 className="md:text-8xl text-6xl font-medium leading-tight "></h1>
 							<div className="mt-6 flex items-center gap-4">
-               <a
-                 href="https://www.instagram.com/globetrauthor/?utm_source=ig_web_button_share_sheet"
-                 aria-label="Instagram"
-                 className="transition-opacity hover:opacity-80"
-                 target="_blank"
-                 rel="noreferrer"
-               >
-                 <img src="/instagram-icon.webp" alt="Instagram" className="h-9 w-9" />
-               </a>
-               <a
-                 href="https://www.linkedin.com/in/lilianaerasmus/"
-                 aria-label="LinkedIn"
-                 className="transition-opacity hover:opacity-80"
-                 target="_blank"
-                 rel="noreferrer"
-               >
-                 <img src="/linkedin-icon.webp" alt="LinkedIn" className="h-9 w-9" />
-               </a>
+                
              </div>
 							
 							
@@ -70,6 +53,31 @@ export default function ContactPage() {
 								Send message
 							</button>
 						</form>
+						<p className="text-sm uppercase tracking-[0.2em] text-stone-500">SOCIALS</p>
+						<div className="mt-0 ml-0 md:ml-0 lg:ml-0 flex items-center gap-4">
+							
+							
+               <a
+                 href="https://www.instagram.com/globetrauthor/?utm_source=ig_web_button_share_sheet"
+                 aria-label="Instagram"
+                 className="transition-opacity hover:opacity-80"
+                 target="_blank"
+                 rel="noreferrer"
+               >
+                 <img src="/instagram-icon.webp" alt="Instagram" className="h-9 w-9" />
+               </a>
+               <a
+                 href="https://www.linkedin.com/in/lilianaerasmus/"
+                 aria-label="LinkedIn"
+                 className="transition-opacity hover:opacity-80"
+                 target="_blank"
+                 rel="noreferrer"
+               >
+                 <img src="/linkedin-icon.webp" alt="LinkedIn" className="h-9 w-9" />
+               </a>
+             </div>
+						
+						
 					</div>
 				</div>
 			</main>
