@@ -11,7 +11,7 @@ const janeAust = localFont({
 });
 
 const LibreCaslonText = Libre_Caslon_Text({
-  weight: "400",
+  weight: "700",
   subsets: ["latin"],
 });
 
@@ -213,7 +213,7 @@ export default function BookCarousel() {
                       className={`${LibreCaslonText.className} whitespace-nowrap p-5 text-lg md:text-xl text-black`}
                       style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
                     >
-                      {book.title} <span className="text-sm font-bold">{book.year}</span>
+                      {book.title} <span className="text-sm font-normal">{book.year}</span>
                     </p>
                   </div>
                 </Link>
@@ -224,7 +224,7 @@ export default function BookCarousel() {
                 style={{ backgroundColor: book.color } as React.CSSProperties}
               >
                 <p
-                  className={`${LibreCaslonText.className} whitespace-nowrap p-5 text-lg text-black`}
+                  className={`${LibreCaslonText.className} whitespace-nowrap p-5 text-lg text-normal`}
                   style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
                 >
                   {book.title} <span className="text-sm font-normal">{book.year}</span>
