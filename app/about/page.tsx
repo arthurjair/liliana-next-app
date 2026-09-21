@@ -18,11 +18,11 @@ export default function AboutPage() {
               </div>
             </div>
             <div className="flex flex-col justify-center items-start">
-             <p className="mt-6 text-left md:text-left text-md lg:text-2xl leading-relaxed text-stone-700">
-               Liliana Erasmus is a Dutch Caribbean writer who has lived in The Netherlands and is back on her island Aruba where she writes for children of all ages and young adults. Her newest publication, <a href="/books/Zap-Zap-ZZZIENNG" className="font-bold underline underline-offset-4 hover:text-stone-900">Zap! Zap! Zzziennng!</a> (Aruba’s Children’s Book Festival Gift 2025) has been turned into an immersive, multi-purpose audiobook. <br></br> <br></br>Her debut, the children’s poetry collection <span className="font-bold">Rima Rond di Aruba</span> is a local bestseller, and the start of Liliana’s career as an author (and illustrator) of children’s stories, poems, songs, radio and short plays in Papiamento, Dutch and English. In 2025 she received a grant from the <a href="https://www.letterenfonds.nl/en" className="font-bold underline underline-offset-4 hover:text-stone-900">Dutch Foundation for Literature</a> to write a Caribbean novel for young adults.
+             <p className=" p-2 ml-10 text-left md:text-left text-sm lg:text-2xl w-[75vw] md:w-90 md:ml-45 lg:ml-0 lg:w-full leading-relaxed justify-center items-center text-stone-700">
+               Liliana Erasmus is a Dutch Caribbean writer who has lived in The Netherlands and is back on her island Aruba where she writes for children of all ages and young adults. Her newest publication, <a href="/books/Zap-Zap-ZZZIENNG" className="font-bold  italic hover:text-yellow-300 hover:text-stone-900">Zap! Zap! Zzziennng!</a> (Aruba’s Children’s Book Festival Gift 2025) has been turned into an immersive, multi-purpose audiobook. <br></br> <br></br>Her debut, the children’s poetry collection <a href="/books/Rhymes-Around-Aruba" className="font-bold  italic hover:text-red-400 hover:text-stone-900">Rhymes Around Aruba</a> is a local bestseller, and the start of Liliana’s career as an author (and illustrator) of children’s stories, poems, songs, radio and short plays in Papiamento, Dutch and English. In 2025 she received a grant from the <a href="https://www.letterenfonds.nl/en" className="font-bold  hover:text-stone-900">Dutch Foundation for Literature</a> to write a Caribbean novel for young adults.
              </p>
 
-             <div className="mt-6 flex items-center gap-4">
+             <div className="mt-6 ml-14 md:ml-50 lg:ml-2 flex items-center gap-4">
                <a
                  href="https://www.instagram.com/globetrauthor/?utm_source=ig_web_button_share_sheet"
                  aria-label="Instagram"

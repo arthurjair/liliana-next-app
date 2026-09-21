@@ -32,6 +32,7 @@ export default async function BookPage({ params }: BookPageProps) {
               src={book.image}
               alt={book.title}
               className="h-full max-h-[32rem] w-full max-w-sm object-contain"
+              style={{ WebkitOverflowScrolling: "touch" }}
             />
           </div>
 

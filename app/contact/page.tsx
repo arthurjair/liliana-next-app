@@ -9,9 +9,28 @@ export default function ContactPage() {
 					<div className="mt-4 grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
 						<div>
 							<h1 className="md:text-8xl text-6xl font-medium leading-tight ">Connect?</h1>
-							<p className="mt-6 max-w-md text-lg leading-relaxed text-stone-700">
-								Feeling interested or inspired by some of my work? Looking for more information? Feel free to send me a message.
-							</p>
+							<div className="mt-6 flex items-center gap-4">
+               <a
+                 href="https://www.instagram.com/globetrauthor/?utm_source=ig_web_button_share_sheet"
+                 aria-label="Instagram"
+                 className="transition-opacity hover:opacity-80"
+                 target="_blank"
+                 rel="noreferrer"
+               >
+                 <img src="/instagram-icon.webp" alt="Instagram" className="h-9 w-9" />
+               </a>
+               <a
+                 href="https://www.linkedin.com/in/lilianaerasmus/"
+                 aria-label="LinkedIn"
+                 className="transition-opacity hover:opacity-80"
+                 target="_blank"
+                 rel="noreferrer"
+               >
+                 <img src="/linkedin-icon.webp" alt="LinkedIn" className="h-9 w-9" />
+               </a>
+             </div>
+							
+							
 						</div>
 
 						<form action="https://formspree.io/f/mdekeegy" method="post">
