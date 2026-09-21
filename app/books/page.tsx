@@ -147,7 +147,7 @@ export default function BooksPage() {
 
   return (
     <>
-      <main className="p-4 sm:p-6">
+      <main className="p-4 lg:mt-10 sm:p-6">
         <h1 className="mb-6 text-sm uppercase tracking-[0.2em] text-stone-500">All Books</h1>
         <div className="grid grid-cols-2 gap-3 sm:gap-4 lg:grid-cols-4 lg:gap-5">
           {books.map((book) => (

@@ -36,7 +36,7 @@ export default function NavigationBar() {
 	return (
 		<nav className="relative z-[60]">
 			{/* navigation and open menu */}
-			<div className="grid h-16 grid-cols-3 items-center px-4 sm:px-6 lg:px-10 lg:mb-7">
+			<div className="grid h-16 grid-cols-3 items-center px-4 sm:px-6 lg:px-10">
 				<button
 				type="button"
 				 className="flex h-11 w-11 items-center justify-start rounded-md text-2xl leading-none transition-colors hover:bg-zinc-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 md:hidden"

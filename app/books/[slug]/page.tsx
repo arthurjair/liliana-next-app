@@ -21,7 +21,7 @@ export default async function BookPage({ params }: BookPageProps) {
 
   return (
     <>
-      <main className="flex-1 px-4 py-8 sm:px-6 lg:px-12">
+      <main className="flex-1 px-4 py-8 sm:px-6 lg:px-12 lg:mt-4">
         <Link href="/books" className="text-sm underline underline-offset-4 text-sm uppercase tracking-[0.2em] text-stone-500">
           Back to all books
         </Link>

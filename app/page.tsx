@@ -12,14 +12,14 @@ const janeAust = localFont({
 const books = [
   { slug: "Zap-Zap-ZZZIENNG", title: "Zap Zap Zzziennng!", year: 2025, color: "#EAC342", rotate: 10, mdRotate: 6, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[98%]" },
   { slug: "Aza-and-the-magic-doors", title: "Aza and the Magic Doors", year: 2024, color: "#2E9EFF", rotate: 0, gapAfter: 1.5, mdClass: " h-[98%] md:w-23 md:h-[95%]" },
-  { slug: "the-murf", title: "The Murf", year: 2023, color: "#A4C639", rotate: -6, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[75%]" },
-  { slug: "Zie-wie-je-bent", title: "Be who you are, become what you want to be", year: 2022, color: "#F8EC62", rotate: 6.5, gapAfter: 1.5, mdClass: "h-[92%] md:w-23 md:h-[85%]" },
+  { slug: "the-murf", title: "The Murf", year: 2024, color: "#A4C639", rotate: -6, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[75%]" },
+  { slug: "Zie-wie-je-bent", title: "Be who you are, become what you want to be", year: 2021, color: "#F8EC62", rotate: 6.5, gapAfter: 1.5, mdClass: "h-[92%] md:w-23 md:h-[85%]" },
   { slug: "Schelpeneiland", title: "Shell Island", year: 2021, color: "#56C3EE", rotate: 0, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[93%]" },
-  { slug: "Friends-Everywhere", title: "Friends Everywhere", year: 2021, color: "#E789B6", rotate: -5, gapAfter: 1.5, mdClass: "md:w-23 md:h-[75%]" },
-  { slug: "What-Does-Kiwi-Want-Now", title: "What does Kiwi want now?", year: 2021, color: "#FE7C02", rotate: 5, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[85%]" },
-  { slug: "Ghosts-and-Monsters-Everywhere", title: "Ghosts and Monsters Everywhere", year: 2021, color: "#CE181B", rotate: 0, gapAfter: 2, mdClass: "h-[98%] md:w-23 md:h-[97%]" },
-  { slug: "Grandmas-and-Grandpas-Everywhere", title: "Grandmas and Grandpas Everywhere", year: 2021, color: "#96D4E3", rotate: -5, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[92%]" },
-  { slug: "A-Ray-on-the-Hook", title: "A Ray on the Hook", year: 2021, color: "#FAF292", rotate: 5, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[85%]" },
+  { slug: "Friends-Everywhere", title: "Friends Everywhere", year: 2018, color: "#E789B6", rotate: -5, gapAfter: 1.5, mdClass: "md:w-23 md:h-[75%]" },
+  { slug: "What-Does-Kiwi-Want-Now", title: "What does Kiwi want now?", year: 2018, color: "#FE7C02", rotate: 5, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[85%]" },
+  { slug: "Ghosts-and-Monsters-Everywhere", title: "Ghosts and Monsters Everywhere", year: 2017, color: "#CE181B", rotate: 0, gapAfter: 2, mdClass: "h-[98%] md:w-23 md:h-[97%]" },
+  { slug: "Grandmas-and-Grandpas-Everywhere", title: "Grandmas and Grandpas Everywhere", year: 2016, color: "#96D4E3", rotate: -5, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[92%]" },
+  { slug: "A-Ray-on-the-Hook", title: "A Ray on the Hook", year: 2015, color: "#FAF292", rotate: 5, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[85%]" },
 ];
 
 const MOBILE_BOOK_WIDTH_REM = 5.5;
