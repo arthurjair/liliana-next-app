@@ -17,7 +17,7 @@ export const metadata: Metadata = {
   title: "Liliana Erasmus",
   description: "",
   icons: {
-    icon: "/favicon.png",
+    icon: "/favicon.ico",
   },
 };
 
