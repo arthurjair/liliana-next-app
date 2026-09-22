@@ -52,6 +52,9 @@ export default function BookCarousel() {
   const baselineScrollLeft = useRef(0);
   const wrapperRefs = useRef<(HTMLDivElement | null)[]>([]);
   const coverRefs = useRef<(HTMLDivElement | null)[]>([]);
+  const dragStartXRef = useRef<number | null>(null);
+  const dragStartScrollLeftRef = useRef(0);
+  const dragMovedRef = useRef(false);
 
   const applyFrame = (angles: number[]) => {
     const rootFontSize = parseFloat(getComputedStyle(document.documentElement).fontSize) || 16;
@@ -128,6 +131,37 @@ export default function BookCarousel() {
     });
   }, []);
 
+  const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
+    const target = event.target as HTMLElement;
+    if (target.closest("a")) return;
+
+    const el = carouselRef.current;
+    if (!el) return;
+
+    dragMovedRef.current = false;
+    dragStartXRef.current = event.clientX;
+    dragStartScrollLeftRef.current = el.scrollLeft;
+    el.setPointerCapture(event.pointerId);
+  };
+
+  const handlePointerMove = (event: React.PointerEvent<HTMLDivElement>) => {
+    if (dragStartXRef.current === null) return;
+
+    const el = carouselRef.current;
+    if (!el) return;
+
+    const deltaX = event.clientX - dragStartXRef.current;
+    if (Math.abs(deltaX) > 6) {
+      dragMovedRef.current = true;
+    }
+
+    el.scrollLeft = dragStartScrollLeftRef.current - deltaX;
+  };
+
+  const handlePointerUp = () => {
+    dragStartXRef.current = null;
+  };
+
   return (
     <>
       <IndexDragIndicator opacity={stickerOpacity} />
@@ -139,6 +173,11 @@ export default function BookCarousel() {
 
         <div
           ref={carouselRef}
+          onPointerDown={handlePointerDown}
+          onPointerMove={handlePointerMove}
+          onPointerUp={handlePointerUp}
+          onPointerLeave={handlePointerUp}
+          onPointerCancel={handlePointerUp}
           onScroll={(event) => {
             const container = event.currentTarget;
             const delta = container.scrollLeft - baselineScrollLeft.current;
@@ -149,7 +188,7 @@ export default function BookCarousel() {
             const fadeDistance = (spacerRef.current?.offsetWidth ?? 180) * 0.5;
             setStickerOpacity(Math.max(0, 1 - delta / fadeDistance));
           }}
-          className="relative z-10 pb-1 px-.5 flex min-h-0 w-full flex-1 items-end overflow-x-auto overflow-y-hidden snap-x snap-mandatory scrollbar-hide [container-type:inline-size]"
+          className="relative z-10 pb-1 px-.5 flex min-h-0 w-full flex-1 items-end overflow-x-auto overflow-y-hidden snap-x snap-end scrollbar-hide [container-type:inline-size] cursor-grab active:cursor-grabbing"
         >
           <div ref={spacerRef} aria-hidden className="shrink-0 snap-start w-11 md:w-80 lg:w-150 xl:w-230" />
 
@@ -164,6 +203,12 @@ export default function BookCarousel() {
                 <Link
                   href={`/books/${book.slug}`}
                   className="block h-full w-full cursor-pointer"
+                  onClick={(event) => {
+                    if (dragMovedRef.current) {
+                      event.preventDefault();
+                      dragMovedRef.current = false;
+                    }
+                  }}
                 >
                   <div
                     ref={(el) => { coverRefs.current[i] = el; }}
