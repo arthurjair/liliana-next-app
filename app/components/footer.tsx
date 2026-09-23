@@ -12,7 +12,7 @@ export default function Footer() {
 
       
         
-      <h1 className="p-4 pl-5 text-5xl font-medium text-white lg:text-7xl">
+      <h1 className="p-4 pl-5 text-5xl font-medium text-white lg:text-7xl lg:mt-3">
         <span className={janeAust.className}>Danki</span> <br></br>for your Curiosity!
       </h1>
       <div className="flex items-center justify-between w-full">

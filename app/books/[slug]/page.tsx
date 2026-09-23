@@ -21,7 +21,7 @@ export default async function BookPage({ params }: BookPageProps) {
 
   return (
     <>
-      <main className="flex-1 px-4 py-8 sm:px-6 lg:px-12 lg:mt-4">
+      <main className="flex-1 px-4 py-8 sm:px-6 lg:px-12  bg-white ">
         <Link href="/books" className="text-sm underline underline-offset-4 text-sm uppercase tracking-[0.2em] text-stone-500">
           Back to all books
         </Link>
@@ -38,7 +38,7 @@ export default async function BookPage({ params }: BookPageProps) {
 
           <div className="max-w-xl">
             
-            <h1 className="text-4xl font-medium leading-tight sm:text-6xl lg:text-7xl lg:font-medium">
+            <h1 className="text-4xl font-medium text-black leading-tight sm:text-6xl lg:text-7xl lg:font-medium">
               {book.title}
             </h1>
             <p className="mt-8 text-lg leading-relaxed text-stone-700">

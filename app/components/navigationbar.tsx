@@ -34,12 +34,12 @@ export default function NavigationBar() {
 	}, [isMenuOpen]);
 
 	return (
-		<nav className="relative z-[60]">
+		<nav className="relative z-[60] ">
 			{/* navigation and open menu */}
-			<div className="grid h-16 grid-cols-3 items-center px-4 sm:px-6 lg:px-10">
+			<div className="grid h-16 grid-cols-3 items-center px-4 sm:px-6 lg:px-10  bg-white">
 				<button
 				type="button"
-				 className="flex h-11 w-11 items-center justify-start rounded-md text-2xl leading-none transition-colors hover:bg-zinc-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 md:hidden"
+				 className="flex h-11 w-11 items-center justify-start rounded-md text-black text-2xl leading-none transition-colors hover:bg-zinc-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 md:hidden"
 				aria-label={isMenuOpen ? "Close menu" : "Open menu"}
 				aria-expanded={isMenuOpen}
 				onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -52,14 +52,14 @@ export default function NavigationBar() {
 				</button>
 
 			<Link
-				className={`${janeAust.className} justify-self-center whitespace-nowrap text-2xl font-semibold md:col-start-1 sm:justify-self-start`}
+				className={`${janeAust.className} justify-self-center  whitespace-nowrap text-black text-2xl font-semibold md:col-start-1 sm:justify-self-start`}
 				href="/"
 			>
 				<span className="md:hidden">Liliana Erasmus</span>
 				<img
 					src="/nav-gif.gif"
 					alt="Liliana Erasmus"
-					className="hidden h-auto w-32 object-contain md:block"
+					className="hidden h-auto w-32 object-contain md:block "
 				/>
 			</Link>
 
@@ -68,7 +68,7 @@ export default function NavigationBar() {
 					<Link
 						key={item.href}
 						href={item.href}
-						className="whitespace-nowrap text-lg font-medium transition-colors hover:text-zinc-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900"
+						className="whitespace-nowrap text-lg text-black  font-medium transition-colors hover:text-zinc-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900"
 						role="menuitem"
 					>
 						{item.label}
@@ -93,7 +93,7 @@ export default function NavigationBar() {
 						<Link
 							key={item.href}
 							href={item.href}
-							className="  border-zinc-100 py-7 text-5xl transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900"
+							className="  border-zinc-100 text-black py-7 text-5xl transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900"
 							onClick={() => setIsMenuOpen(false)}
 							role="menuitem"
 						>

@@ -4,7 +4,7 @@ import Footer from "../components/footer";
 export default function AboutPage() {
   return (
     <>
-      <main className="flex-1 px-4 py-8 sm:px-6 lg:px-12">
+      <main className="flex-1 px-4 py-8 sm:px-6 lg:px-12  bg-white">
         <div className="mx-auto max-w-6xl pb-10">
           <p className="text-sm uppercase tracking-[0.2em] text-stone-500">ABOUT ME</p>
           <div className="mt-10 lg:mt-20 grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">

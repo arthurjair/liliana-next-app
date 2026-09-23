@@ -3,7 +3,7 @@ import Footer from "../components/footer";
 export default function ContactPage() {
 	return (
 		<>
-			<main className="flex-1 px-4 py-10 sm:px-6 lg:px-12">
+			<main className="flex-1 px-4 py-10 sm:px-6 lg:px-12 bg-white text-black">
 				<div className="mx-auto max-w-6xl">
 					<p className="text-sm uppercase tracking-[0.2em] text-stone-500">Contact</p>
 					<div className="mt-0 grid gap-10 lg:grid-cols-[0.8fr_1.2fr] lg:gap-20">
