@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import type { ReactNode } from "react";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import NavigationBar from "./components/navigationbar";
@@ -13,15 +14,13 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
+// The tab icon comes from app/icon.png (Next.js picks it up automatically).
 export const metadata: Metadata = {
   title: "Liliana Erasmus",
-  description: "",
-  icons: {
-    icon: "/favicon.ico",
-  },
+  description: "Children's book author Liliana Erasmus",
 };
 
-export default function RootLayout({ children }: LayoutProps<"/">) {
+export default function RootLayout({ children }: Readonly<{ children: ReactNode }>) {
   return (
     <html
       lang="en"

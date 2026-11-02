@@ -49,8 +49,27 @@ body {
   animation: indicator-float 3.5s ease-in-out infinite;
 }
 
+/* the arrow inside the scroll indicator nudges left, like a swipe */
+@keyframes indicator-nudge {
+  0%,
+  55%,
+  100% {
+    transform: translateX(0);
+  }
+
+  25% {
+    transform: translateX(-10px);
+  }
+}
+
+.indicator-nudge {
+  display: inline-block;
+  animation: indicator-nudge 1.6s ease-in-out infinite;
+}
+
 @media (prefers-reduced-motion: reduce) {
-  .indicator-float {
+  .indicator-float,
+  .indicator-nudge {
     animation: none;
   }
 }

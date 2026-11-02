@@ -2,13 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import localFont from "next/font/local";
 import { Libre_Caslon_Text } from "next/font/google";
 import IndexDragIndicator from "./components/indexdragindicator";
-
-const janeAust = localFont({
-  src: "./fonts/JaneAust.ttf",
-});
 
 const LibreCaslonText = Libre_Caslon_Text({
   weight: "700",
@@ -19,7 +14,7 @@ const books = [
   { slug: "Zap-Zap-ZZZIENNG", title: "Zap Zap Zzziennng!", year: 2025, color: "#EAC342", rotate: 10, mdRotate: 6, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[98%]" },
   { slug: "Aza-and-the-magic-doors", title: "Aza and the Magic Doors", year: 2024, color: "#2E9EFF", rotate: 0, gapAfter: 1.5, mdClass: " h-[98%] md:w-23 md:h-[95%]" },
   { slug: "the-murf", title: "The Murf", year: 2024, color: "#A4C639", rotate: -6, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[75%]" },
-  { slug: "Zie-wie-je-bent", title: "Be who you are, become what you want to be", year: 2021, color: "#F8EC62", rotate: 6.5, gapAfter: 1.5, mdClass: "h-[92%] md:w-23 md:h-[85%]" },
+  { slug: "Zie-wie-je-bent", title: "Be Who You Are, Become Whatever You Want", year: 2021, color: "#F8EC62", rotate: 6.5, gapAfter: 1.5, mdClass: "h-[92%] md:w-23 md:h-[85%]" },
   { slug: "Schelpeneiland", title: "Shell Island", year: 2021, color: "#56C3EE", rotate: 0, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[93%]" },
   { slug: "Friends-Everywhere", title: "Friends Everywhere", year: 2018, color: "#E789B6", rotate: -5, gapAfter: 1.5, mdClass: "md:w-23 md:h-[75%]" },
   { slug: "What-Does-Kiwi-Want-Now", title: "What does Kiwi want now?", year: 2018, color: "#FE7C02", rotate: 5, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[85%]" },
@@ -131,6 +126,42 @@ export default function BookCarousel() {
     });
   }, []);
 
+  // On desktop most people scroll with a mouse wheel (up/down). The books scroll
+  // sideways, so translate vertical wheel movement into horizontal scrolling.
+  useEffect(() => {
+    const el = carouselRef.current;
+    if (!el) return;
+
+    let snapTimeout: ReturnType<typeof setTimeout> | undefined;
+
+    const onWheel = (event: WheelEvent) => {
+      if (Math.abs(event.deltaY) <= Math.abs(event.deltaX)) return; // trackpad sideways swipe already works
+      if (el.scrollWidth <= el.clientWidth) return;
+
+      event.preventDefault();
+      // switch snapping off while the wheel moves, so it doesn't jump back
+      el.style.scrollSnapType = "none";
+      el.scrollLeft += event.deltaY;
+
+      clearTimeout(snapTimeout);
+      snapTimeout = setTimeout(() => {
+        el.style.scrollSnapType = "";
+      }, 200);
+    };
+
+    el.addEventListener("wheel", onWheel, { passive: false });
+    return () => {
+      el.removeEventListener("wheel", onWheel);
+      clearTimeout(snapTimeout);
+    };
+  }, []);
+
+  const scrollToRecentWorks = () => {
+    const el = carouselRef.current;
+    if (!el) return;
+    el.scrollBy({ left: el.clientWidth * 0.6, behavior: "smooth" });
+  };
+
   const handlePointerDown = (event: React.PointerEvent<HTMLDivElement>) => {
     const target = event.target as HTMLElement;
     if (target.closest("a")) return;
@@ -164,12 +195,25 @@ export default function BookCarousel() {
 
   return (
     <>
-      <IndexDragIndicator opacity={stickerOpacity} />
+      <IndexDragIndicator opacity={stickerOpacity} onClick={scrollToRecentWorks} />
 
       <main className="relative flex h-[calc(100dvh-4rem)] min-h-0 w-full flex-col overflow-hidden overscroll-none bg-white">
-        <p className={`${janeAust.className} pointer-events-none absolute inset-x-0 top-1/2 z-0 hidden -translate-y-1/2 select-none whitespace-nowrap text-center text-black/90 md:block md:text-6xl lg:text-9xl`}>
-          Liliana Erasmus
-        </p>
+        {/* Monogram behind the books (replaces the big name). The PNG is used as a
+            mask, so the color comes from bg-… and can be changed freely. */}
+        <div
+          aria-hidden="true"
+          className="pointer-events-none absolute left-1/2 top-1/2 z-0 hidden aspect-square h-[62%] -translate-x-1/2 -translate-y-1/2 select-none bg-black/90 md:block"
+          style={{
+            WebkitMaskImage: "url(/logo-monogram.png)",
+            maskImage: "url(/logo-monogram.png)",
+            WebkitMaskSize: "contain",
+            maskSize: "contain",
+            WebkitMaskRepeat: "no-repeat",
+            maskRepeat: "no-repeat",
+            WebkitMaskPosition: "center",
+            maskPosition: "center",
+          }}
+        />
 
         <div
           ref={carouselRef}

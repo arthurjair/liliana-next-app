@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 import localFont from "next/font/local";
 import { useEffect, useState } from "react";
 
@@ -10,12 +11,14 @@ const janeAust = localFont({
 
 const menuItems = [
 	{ label: "BOOKS", href: "/books" },
+	{ label: "NEWS", href: "/news" },
 	{ label: "ABOUT ME", href: "/about" },
 	{ label: "CONTACT", href: "/contact" },
 ];
 
 export default function NavigationBar() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false);
+	const pathname = usePathname();
 
 	useEffect(() => {
 		const closeMenuOnEscape = (event: KeyboardEvent) => {
@@ -32,6 +35,9 @@ export default function NavigationBar() {
 			document.body.style.overflow = "";
 		};
 	}, [isMenuOpen]);
+
+	// The news editor gets the whole screen, without the site menu.
+	if (pathname?.startsWith("/news-admin")) return null;
 
 	return (
 		<nav className="relative z-[60] ">
@@ -52,15 +58,10 @@ export default function NavigationBar() {
 				</button>
 
 			<Link
-				className={`${janeAust.className} justify-self-center  whitespace-nowrap text-black text-2xl font-semibold md:col-start-1 sm:justify-self-start`}
+				className={`${janeAust.className} justify-self-center whitespace-nowrap text-black text-2xl font-semibold md:col-start-1 md:text-3xl sm:justify-self-start`}
 				href="/"
 			>
-				<span className="md:hidden">Liliana Erasmus</span>
-				<img
-					src="/nav-gif.gif"
-					alt="Liliana Erasmus"
-					className="hidden h-auto w-32 object-contain md:block "
-				/>
+				Liliana Erasmus
 			</Link>
 
 			<div className="col-start-3 hidden items-center justify-end gap-8 md:flex" role="menubar">
@@ -88,12 +89,12 @@ export default function NavigationBar() {
 				className={`fixed bottom-0 left-0 top-16 w-full border-r border-zinc-200 bg-white px-5 py-6 shadow-xl transition-transform duration-300 ease-out sm:hidden ${isMenuOpen ? "translate-x-0" : "-translate-x-full"}`}
 				aria-hidden={!isMenuOpen}
 			>
-				<div className="flex flex-col items-center py-20" role="menu">
+				<div className="flex flex-col items-center py-12" role="menu">
 					{menuItems.map((item) => (
 						<Link
 							key={item.href}
 							href={item.href}
-							className="  border-zinc-100 text-black py-7 text-5xl transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900"
+							className="  border-zinc-100 text-black py-5 text-5xl transition-colors focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900"
 							onClick={() => setIsMenuOpen(false)}
 							role="menuitem"
 						>

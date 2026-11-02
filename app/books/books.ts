@@ -6,6 +6,21 @@ export type Book = {
   buyUrl: string;
 };
 
+// Illustrator names that become links on a book's own page.
+// The name must be written exactly like it appears in the blurb.
+export const artistLinks: { name: string; url: string }[] = [
+  { name: "Daniëlle Schothorst", url: "https://danielleschothorst.nl/" },
+  { name: "ivan & ilia", url: "https://ivanenilia.nl/" },
+  { name: "Helen van Vliet", url: "https://helenvanvliet.nl/" },
+  { name: "Elvis Tromp", url: "https://www.facebook.com/elvistromp/" },
+  { name: "Vanessa Paulina", url: "https://vanessapaulina.eu/" },
+  { name: "Mariëlla van de Beek", url: "https://mariellavandebeek.nl/" },
+  { name: "Peter van Harmelen", url: "https://petervanharmelen.nl/" },
+  { name: "Moritz Ebinger", url: "https://moritzebinger.nl/" },
+  { name: "Wilbert van der Steen", url: "https://wvds.net/n/home-nl" },
+  { name: "Leo Timmers", url: "https://leotimmers.com/" },
+];
+
 export const books: Book[] = [
   {
     slug: "Zap-Zap-ZZZIENNG",
@@ -30,14 +45,14 @@ export const books: Book[] = [
   },
   {
     slug: "Zie-wie-je-bent",
-    title: "Be who you are, become who you want to be",
+    title: "Be Who You Are, Become Whatever You Want",
     image: "/books/Zijn-wie-je.webp",
     blurb: "A collection of poems for children in Dutch. A special Children's Book Week 2021 edition containing poems written by authors from Aruba, Bonaire, Curaçao and The Netherlands. With illustrations by Aruban artist Vanessa Paulina and Dutch illustrator Helen van Vliet. Levendig Uitgever, 2021",
     buyUrl: "https://boekwinkel.levendiguitgever.nl/home/122-zijn-wie-je-bent-worden-wat-je-wil.html",
   },
   {
     slug: "Schelpeneiland",
-    title: "Shell Island",
+    title: "Ora Ubao, Shell Island",
     image: "/books/Schelpeneiland.webp",
     blurb: "Bilingual children's book gift for Aruba's Children's Book Festival 2020 containing stories and poems written by authors from Aruba and The Netherlands. Illustrations by Aruban artist Elvis Tromp. Levendig Uitgever, 2020",
     buyUrl: "",
@@ -46,14 +61,14 @@ export const books: Book[] = [
     slug: "Friends-Everywhere",
     title: "Friends Everywhere",
     image: "/books/Friends-everywhere.webp",
-    blurb: "Bilingual children's book gift for Aruba's Children's Book Festival 2018 containing stories and poems written by authors from Aruba, Curaçao, Suriname, Bonaire, and the Netherlands. Illustrations by Aruban artist Elvis Tromp. Levendig Uitgever, 2018",
+    blurb: "This bilingual children's book gift for Aruba's Children's Book Festival 2018 contains stories and poems written by authors from Aruba, Curaçao, Suriname, Bonaire and The Netherlands. Illustrations by Aruban artist Vanessa Paulina. Levendig Uitgever, 2018",
     buyUrl: "",
   },
   {
     slug: "What-Does-Kiwi-Want-Now",
     title: "What Does Kiwi Want Now?",
     image: "/books/Kiwi.webp",
-    blurb: "Kiwi always gets what he wants, except what he desires most: the Tri-Fox GX10. His dad has a Tri-Fox, his mom has one, even his friends at school. But, is this popular gadget what Kiwi really needs? This kamishibai (Japanese paper play) story is a production of Kiwanis Club Of Aruba to raise awareness on the dangers of device addicition. Levendig Uitgever, 2017",
+    blurb: "Kiwi always gets what he wants, except what he desires most: the Tri-Fox GX10. His dad has a Tri-Fox, his mom has one, even his friends at school. But, is this popular gadget what Kiwi really needs? This kamishibai (Japanese paper play) story is a production of Kiwanis Club Of Aruba to raise awareness on the dangers of device addiction. Levendig Uitgever, 2017",
     buyUrl: "",
   },
   {
@@ -64,10 +79,17 @@ export const books: Book[] = [
     buyUrl: "https://boekwinkel.levendiguitgever.nl/verhalenboeken/45-overal-monsters-en-spoken.html",
   },
   {
+    slug: "On-an-Enchanted-Island",
+    title: "On an Enchanted Island",
+    image: "/books/On-an-Enchanted-Island.webp",
+    blurb: "A collection of fairy tales in Papiamento published in book and kamishibai story cards format, commissioned by the Department of Education of Aruba and FDA (Development Funds Aruba) Penta Educatief, 2016",
+    buyUrl: "",
+  },
+  {
     slug: "Grandmas-and-Grandpas-Everywhere",
     title: "Grandmas and Grandpas Everywhere",
     image: "/books/Grandmas-grandpas.webp",
-    blurb: "The stories and poems come from all the corners of the world. Inspired by personal memories or by legends and fairy tales from forgotten times. The book matches the Children’s Book Week 2016’s theme ‘Grandma’s and Grandma’s - Forever Young’. Illustrations by Dutch artist Mariëlla van de Beek.Levendig Uitgever, 2016 (Aruba & The Netherlands)",
+    blurb: "The stories and poems come from all the corners of the world. Inspired by personal memories or by legends and fairy tales from forgotten times. The book matches the Children’s Book Week 2016’s theme ‘Grandma’s and Grandma’s - Forever Young’. Illustrations by Dutch artist Mariëlla van de Beek. Levendig Uitgever, 2016 (Aruba & The Netherlands)",
     buyUrl: "https://boekwinkel.levendiguitgever.nl/verhalenboeken/43-overal-opa-s-en-oma-s.html",
   },
   {
@@ -78,15 +100,9 @@ export const books: Book[] = [
     buyUrl: "",
   },
   {
-    slug: "On-an-Enchanted-Island",
-    title: "On an Enchanted Island",
-    image: "/books/On-an-Enchanted-Island.webp",
-    blurb: "A collection of fairy tales in Papiamento published in book and kamishibai story cards format, commissioned by the Department of Education of Aruba and FDA (Development Funds Aruba) Penta Educatief, 2016",
-    buyUrl: "",
-  },
-  {
     slug: "Do-Not-Touch",
     title: "Do Not Touch!",
+    // TODO: swap for the new cover once it's in /public/books
     image: "/books/Do-Not-Touch.webp",
     blurb: "Rai has a friend, his name is Panda. They have a lot of fun together. But Panda has a problem. Panda can't stop touching... Everything! Rai needs to come up with a plan. This kamishibai (Japanese paper play) story is a co-production of Kiwanis Club Of Aruba and the Respeta Mi Foundation to promote and support comprehensive sex education in all local schools on the island at an earliest age possible. Levendig Uitgever, 2015",
     buyUrl: "",
@@ -102,12 +118,12 @@ export const books: Book[] = [
     slug: "The-Hand-Dynamo",
     title: "The Hand Dynamo",
     image: "/books/The-Flashlight.jpg",
-    blurb: "LLoes moves to an old house on a tropical island. There she finds an antique hand dynamo lamp. Surrounded by the mysterious light she catches a glimpse of the past and hears someone sing. Her neighbor talks about a girl who’s disappeared a long time ago. Illustrations by Dutch artist Wilbert van der Steen. Uitgeverij Delubas, 2012 (The Netherlands and Belgium)",
+    blurb: "Loes moves to an old house on a tropical island. There she finds an antique hand dynamo lamp. Surrounded by the mysterious light she catches a glimpse of the past and hears someone sing. Her neighbor talks about a girl who’s disappeared a long time ago. Illustrations by Dutch artist Wilbert van der Steen. Uitgeverij Delubas, 2012 (The Netherlands and Belgium)",
     buyUrl: "https://www.bol.com/nl/nl/p/spannend-de-knijpkat/9200000000616144/?cid=1789807190162-5817123844432",
   },
   {
     slug: "Nano-y-nena",
-    title: "Nano & Nena",
+    title: "Nano y Nena",
     image: "/books/Nano-y-nena.jpg",
     blurb: "Nano the dwarf feels that there's something missing in his life. When he sets off to find that something, he gets lost in the wilderness. But not for long. Illustrations by Dutch artist Daniëlle Schothorst. Fundacion Papiamente, 2011 Kamishibai story cards, 2015",
     buyUrl: "",
@@ -127,8 +143,8 @@ export const books: Book[] = [
     buyUrl: "",
   },
   {
-    slug: "It-was-Big",
-    title: "It was Big!",
+    slug: "Piglet-Did-It",
+    title: "Piglet Did It!",
     image: "/books/It-Was-Big!.jpg",
     blurb: "Piglet is Lien’s friend, but she keeps blaming him whenever she gets in trouble. Illustrations by Dutch artist Irma Ruifrok. Uitgeverij Zwijsen, 2007, 2008, 2010, 2011 (The Netherlands & Belgium)",
     buyUrl: "https://www.bol.com/nl/nl/p/het-was-big/1001004006481253/?cid=1789807218296-9914372547150",
@@ -137,14 +153,14 @@ export const books: Book[] = [
     slug: "Animal-Rescue",
     title: "Animal Rescue",
     image: "/books/Animal-in-Distress.jpg",
-    blurb: "Luuk is going by plane to grandpa and grandma. They live on an island, far away. They have a sunny house with a large garden. But their neighbor is a monster. He ties his dog to a chain. The poor animal whimpers from thirst. Luuk has to do something about this! Illustrations by Flemish artist Leo Timmers. Uitgeverij Zwijsen, 2008, 2016 (The Netherlands & Belgium)",
+    blurb: "Luuk is going by plane to visit grandpa and grandma. They live on an island, far away. They have a sunny house with a large garden. But their neighbor is a monster. He ties his dog to a chain. The poor animal whimpers from thirst. Luuk has to do something about this! Illustrations by Flemish artist Leo Timmers. Uitgeverij Zwijsen, 2008, 2016 (The Netherlands & Belgium)",
     buyUrl: "",
   },
   {
     slug: "My-Party",
-    title: "My Party",
+    title: "My Party!",
     image: "/books/My-Party.jpg",
-    blurb: "Fleur is organizing her own birthday party and everything that can go wrong on her most special day … Illustrations by Dutch artist Erica Ringelberg.Uitgeverij Zwijsen, 2008 (The Netherlands & Belgium)",
+    blurb: "Fleur is organizing her own birthday party and everything that can go wrong on her most special day … Illustrations by Dutch artist Erica Ringelberg. Uitgeverij Zwijsen, 2008 (The Netherlands & Belgium)",
     buyUrl: "",
   },
   {
@@ -165,12 +181,12 @@ export const books: Book[] = [
     slug: "Hopus",
     title: "Hopus",
     image: "/books/Hopus.jpg",
-    blurb: "Hopus, the curious and magical rabbit, is tired of being confined inside the magician’s hat, and longs to explore the outside world. One day, he gets his chance and is surprised to discover that life outside the hat, the only world he has ever known, is unfamiliar and exciting. Aruba's first Children's Book Festival Gift with illustrations by Dutch artist Daniëlle Schothorst. Fundacion Papiamente, 2005 Uitgeverij Zwijsen, 2006, 2015 (The Netherlands & Belgium) Kamishibai story cards, 2014",
+    blurb: "Hopus, the curious and magical rabbit, is tired of being confined inside the magician’s hat, and longs to explore the outside world. One day, he gets his chance and is surprised to discover that life outside the hat is unfamiliar and exciting. Aruba's first Children's Book Festival Gift with illustrations by Dutch artist Daniëlle Schothorst. Fundacion Papiamente, 2005 Uitgeverij Zwijsen, 2006, 2015 (The Netherlands & Belgium) Kamishibai story cards, 2014",
     buyUrl: "https://www.bol.com/nl/nl/p/hopus/9300000166334785/?cid=1789807314190-9543686988702",
   },
   {
-    slug: "My-First-ABC's",
-    title: "My First ABC's",
+    slug: "My-First-ABC-Book",
+    title: "My First ABC Book",
     image: "/books/My-First-ABC's.jpg",
     blurb: "Aruba's first alphabet book. Fundacion Papiamente, 2004, 2009",
     buyUrl: "",
@@ -179,7 +195,7 @@ export const books: Book[] = [
     slug: "Rhymes-Around-Aruba",
     title: "Rhymes Around Aruba",
     image: "/books/Rhymes-Around-Aruba.jpg",
-    blurb: "Children's poems and songs (Volume I) in native language Papiamento. Editorial Charuba, 2003 Fundacion Papiamente, 2009 ",
+    blurb: "Children's poems and songs (Volume I) in native language Papiamento. Editorial Charuba, 2003 Fundacion Papiamente, 2009",
     buyUrl: "",
   },
 ];
