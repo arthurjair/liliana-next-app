@@ -24,6 +24,7 @@ export default function RootLayout({ children }: Readonly<{ children: ReactNode 
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${geistSans.variable} ${geistMono.variable} h-full scroll-smooth antialiased `}
     >
       <body id="top" suppressHydrationWarning className="flex min-h-screen flex-col">

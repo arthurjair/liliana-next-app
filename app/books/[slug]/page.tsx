@@ -2,6 +2,7 @@ import { Fragment } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import Footer from "../../components/footer";
+import Reveal from "../../components/reveal";
 import { artistLinks, books } from "../books";
 
 type BookPageProps = {
@@ -63,15 +64,16 @@ export default async function BookPage({ params }: BookPageProps) {
         </Link>
 
         <article className="mx-auto mt-8 grid max-w-6xl items-center gap-10 lg:grid-cols-2 lg:gap-20">
-          <div className="flex min-h-[28rem] items-center justify-center rounded-sm bg-stone-100 p-8 sm:min-h-[36rem]">
+          <Reveal className="flex min-h-[28rem] items-center justify-center rounded-sm bg-stone-100 p-8 sm:min-h-[36rem]">
+            {/* the cover tilts a little when you hover it, like picking up a book */}
             <img
               src={book.image}
               alt={book.title}
-              className="h-full max-h-[32rem] w-full max-w-sm object-contain"
+              className="h-full max-h-[32rem] w-full max-w-sm object-contain drop-shadow-lg transition duration-500 ease-out hover:-rotate-2 hover:scale-[1.03]"
             />
-          </div>
+          </Reveal>
 
-          <div className="max-w-xl">
+          <Reveal delay={150} className="max-w-xl">
             <h1 className="text-4xl font-medium leading-tight text-black sm:text-6xl lg:text-7xl">
               {book.title}
             </h1>
@@ -83,12 +85,12 @@ export default async function BookPage({ params }: BookPageProps) {
                 href={book.buyUrl}
                 target="_blank"
                 rel="noreferrer"
-                className="mt-8 inline-flex rounded-3xl bg-black px-8 py-3 text-sm text-white transition-colors hover:bg-[#2E9EFF]"
+                className="group mt-8 inline-flex rounded-3xl bg-black px-8 py-3 text-sm text-white transition-[background-color,scale] hover:bg-[#2E9EFF] active:scale-95"
               >
-                Buy Here
+                Buy Here <span aria-hidden="true" className="ml-1 transition-[translate] duration-300 group-hover:translate-x-1">→</span>
               </a>
             )}
-          </div>
+          </Reveal>
         </article>
       </main>
       <Footer />

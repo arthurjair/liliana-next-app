@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import Link from "next/link";
 import Footer from "../components/footer";
+import Reveal from "../components/reveal";
 import { accentColors, formatPostDate, getPosts } from "./posts";
 
 // The page is refreshed right away whenever Liliana saves a post;
@@ -22,6 +23,7 @@ export default async function NewsPage() {
             <ul className="mt-6 border-t border-stone-200">
               {posts.map((post, i) => (
                 <li key={post.id} className="border-b border-stone-200">
+                  <Reveal>
                   <Link
                     href={`/news/${post.slug}`}
                     style={{ "--accent": accentColors[i % accentColors.length] } as CSSProperties}
@@ -52,6 +54,7 @@ export default async function NewsPage() {
                       </div>
                     )}
                   </Link>
+                  </Reveal>
                 </li>
               ))}
             </ul>

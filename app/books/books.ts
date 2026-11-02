@@ -102,8 +102,7 @@ export const books: Book[] = [
   {
     slug: "Do-Not-Touch",
     title: "Do Not Touch!",
-    // TODO: swap for the new cover once it's in /public/books
-    image: "/books/Do-Not-Touch.webp",
+    image: "/books/Do-Not-Touch-cover.webp",
     blurb: "Rai has a friend, his name is Panda. They have a lot of fun together. But Panda has a problem. Panda can't stop touching... Everything! Rai needs to come up with a plan. This kamishibai (Japanese paper play) story is a co-production of Kiwanis Club Of Aruba and the Respeta Mi Foundation to promote and support comprehensive sex education in all local schools on the island at an earliest age possible. Levendig Uitgever, 2015",
     buyUrl: "",
   },

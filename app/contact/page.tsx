@@ -1,3 +1,4 @@
+import Link from "next/link";
 import localFont from "next/font/local";
 import Footer from "../components/footer";
 import SocialLinks from "../components/sociallinks";
@@ -6,14 +7,15 @@ const janeAust = localFont({
 	src: "../fonts/JaneAust.ttf",
 });
 
-// A little shelf of book spines in the homepage colors (decoration only).
+// A little shelf of her newest books, in the same colors as the homepage spines.
+// Each spine links to the book; the last one leans and stands up straight on hover.
 const spines = [
-	{ color: "#EAC342", height: "h-28", rotate: "0deg" },
-	{ color: "#2E9EFF", height: "h-32", rotate: "0deg" },
-	{ color: "#E789B6", height: "h-24", rotate: "0deg" },
-	{ color: "#A4C639", height: "h-30", rotate: "0deg" },
-	{ color: "#FE7C02", height: "h-26", rotate: "0deg" },
-	{ color: "#56C3EE", height: "h-32", rotate: "12deg" },
+	{ slug: "Zap-Zap-ZZZIENNG", title: "Zap Zap Zzzienng!", color: "#EAC342", height: "h-28" },
+	{ slug: "Aza-and-the-magic-doors", title: "Aza and the Magic Doors", color: "#2E9EFF", height: "h-32" },
+	{ slug: "the-murf", title: "The Murf", color: "#A4C639", height: "h-24" },
+	{ slug: "Schelpeneiland", title: "Ora Ubao, Shell Island", color: "#56C3EE", height: "h-30" },
+	{ slug: "Friends-Everywhere", title: "Friends Everywhere", color: "#E789B6", height: "h-26" },
+	{ slug: "What-Does-Kiwi-Want-Now", title: "What Does Kiwi Want Now?", color: "#FE7C02", height: "h-30", lean: true },
 ];
 
 const fieldClass =
@@ -41,15 +43,29 @@ export default function ContactPage() {
 								<SocialLinks colorMode="hover" className="mt-4" />
 							</div>
 
-							<div aria-hidden="true" className="mt-12 hidden items-end gap-1.5 border-b-2 border-black pb-0 lg:mt-auto lg:flex">
-								{spines.map((spine, i) => (
-									<div
-										key={i}
-										className={`${spine.height} w-7 origin-bottom-left shadow-md`}
-										style={{ backgroundColor: spine.color, transform: `rotate(${spine.rotate})` }}
-									/>
-								))}
-							</div>
+							{/* pt-16 always keeps room above the shelf (for the hover labels); mt-auto pushes it to the bottom */}
+							<nav aria-label="Recent books" className="mt-auto hidden pt-16 lg:block">
+								<div className="flex items-end gap-1.5 border-b-2 border-black">
+									{spines.map((spine) => (
+										<Link
+											key={spine.slug}
+											href={`/books/${spine.slug}`}
+											aria-label={spine.title}
+											className={`group relative ${spine.height} w-8 shadow-md transition-[translate,rotate] duration-300 ease-out focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-black ${
+												spine.lean
+													? "ml-3 origin-bottom-right rotate-[10deg] hover:rotate-0 focus-visible:rotate-0"
+													: "hover:-translate-y-2 focus-visible:-translate-y-2"
+											}`}
+											style={{ backgroundColor: spine.color }}
+										>
+											<span className="pointer-events-none absolute bottom-full left-1/2 mb-2 -translate-x-1/2 whitespace-nowrap rounded-full bg-black px-3 py-1 text-xs text-white opacity-0 transition-opacity duration-200 group-hover:opacity-100 group-focus-visible:opacity-100">
+												{spine.title}
+											</span>
+										</Link>
+									))}
+								</div>
+								<p className="mt-3 text-xs uppercase tracking-[0.2em] text-stone-500">Pick a book from the shelf</p>
+							</nav>
 						</div>
 
 						<form action="https://formspree.io/f/mdekeegy" method="post">
@@ -87,9 +103,9 @@ export default function ContactPage() {
 
 							<button
 								type="submit"
-								className="mt-6 flex w-fit items-center gap-2 rounded-3xl bg-black px-8 py-3 text-sm text-white transition-colors duration-200 hover:bg-[#FE7C02] focus-visible:bg-[#FE7C02]"
+								className="group mt-6 flex w-fit items-center gap-2 rounded-3xl bg-black px-8 py-3 text-sm text-white transition-[background-color,scale] duration-200 hover:bg-[#FE7C02] focus-visible:bg-[#FE7C02] active:scale-95"
 							>
-								Send message <span aria-hidden="true">→</span>
+								Send message <span aria-hidden="true" className="transition-[translate] duration-300 group-hover:translate-x-1">→</span>
 							</button>
 						</form>
 					</div>

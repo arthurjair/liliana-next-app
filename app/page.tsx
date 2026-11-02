@@ -2,28 +2,50 @@
 
 import { useEffect, useRef, useState } from "react";
 import Link from "next/link";
-import { Libre_Caslon_Text } from "next/font/google";
+import { Archivo } from "next/font/google";
 import IndexDragIndicator from "./components/indexdragindicator";
 
-const LibreCaslonText = Libre_Caslon_Text({
-  weight: "700",
+// Clear, bold font for the spine titles
+const archivo = Archivo({
+  weight: ["600", "700"],
   subsets: ["latin"],
 });
 
+// Spine colors are taken from each book's real cover (bg = spine, fg = lettering).
+// "edge" draws a thin outline on light spines so they don't disappear on the white page.
 const books = [
-  { slug: "Zap-Zap-ZZZIENNG", title: "Zap Zap Zzziennng!", year: 2025, color: "#EAC342", rotate: 10, mdRotate: 6, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[98%]" },
-  { slug: "Aza-and-the-magic-doors", title: "Aza and the Magic Doors", year: 2024, color: "#2E9EFF", rotate: 0, gapAfter: 1.5, mdClass: " h-[98%] md:w-23 md:h-[95%]" },
-  { slug: "the-murf", title: "The Murf", year: 2024, color: "#A4C639", rotate: -6, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[75%]" },
-  { slug: "Zie-wie-je-bent", title: "Be Who You Are, Become Whatever You Want", year: 2021, color: "#F8EC62", rotate: 6.5, gapAfter: 1.5, mdClass: "h-[92%] md:w-23 md:h-[85%]" },
-  { slug: "Schelpeneiland", title: "Shell Island", year: 2021, color: "#56C3EE", rotate: 0, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[93%]" },
-  { slug: "Friends-Everywhere", title: "Friends Everywhere", year: 2018, color: "#E789B6", rotate: -5, gapAfter: 1.5, mdClass: "md:w-23 md:h-[75%]" },
-  { slug: "What-Does-Kiwi-Want-Now", title: "What does Kiwi want now?", year: 2018, color: "#FE7C02", rotate: 5, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[85%]" },
-  { slug: "Ghosts-and-Monsters-Everywhere", title: "Ghosts and Monsters Everywhere", year: 2017, color: "#CE181B", rotate: 0, gapAfter: 2, mdClass: "h-[98%] md:w-23 md:h-[97%]" },
-  { slug: "Grandmas-and-Grandpas-Everywhere", title: "Grandmas and Grandpas Everywhere", year: 2016, color: "#96D4E3", rotate: -5, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[92%]" },
-  { slug: "A-Ray-on-the-Hook", title: "A Ray on the Hook", year: 2015, color: "#FAF292", rotate: 5, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[85%]" },
+  { slug: "Zap-Zap-ZZZIENNG", title: "Zap Zap Zzziennng!", year: 2025, bg: "#7FB6E3", fg: "#151515", rotate: 10, mdRotate: 6, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[90%]" },
+  { slug: "Aza-and-the-magic-doors", title: "Aza and the Magic Doors", year: 2024, bg: "#1C4C8F", fg: "#FFE03A", rotate: 0, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[95%]" },
+  { slug: "the-murf", title: "The Murf", year: 2024, bg: "#B7C26A", fg: "#24300C", rotate: -6, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[72%]" },
+  { slug: "Zie-wie-je-bent", title: "Be Who You Are, Become Whatever You Want", year: 2021, bg: "#F6E45A", fg: "#C81D25", rotate: 6.5, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[98%]" },
+  { slug: "Schelpeneiland", title: "Ora Ubao, Shell Island", year: 2020, bg: "#81CCEB", fg: "#1D2D7A", rotate: 0, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[86%]" },
+  { slug: "Friends-Everywhere", title: "Friends Everywhere", year: 2018, bg: "#2F97AB", fg: "#F7E04B", rotate: -5, gapAfter: 1.5, mdClass: "h-[92%] md:w-23 md:h-[80%]" },
+  { slug: "What-Does-Kiwi-Want-Now", title: "What Does Kiwi Want Now?", year: 2017, bg: "#3F306E", fg: "#FF9A2E", rotate: 5, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[86%]" },
+  { slug: "Ghosts-and-Monsters-Everywhere", title: "Ghosts and Monsters Everywhere", year: 2017, bg: "#FCC51D", fg: "#B9181E", rotate: 0, gapAfter: 2, mdClass: "h-[98%] md:w-23 md:h-[97%]" },
+  { slug: "Grandmas-and-Grandpas-Everywhere", title: "Grandmas and Grandpas Everywhere", year: 2016, bg: "#FBFDFE", fg: "#D0202A", edge: true, rotate: -5, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[94%]" },
+  { slug: "A-Ray-on-the-Hook", title: "A Ray on the Hook", year: 2015, bg: "#CFE3EF", fg: "#1675C6", edge: true, rotate: 5, gapAfter: 1.5, mdClass: "h-[96%] md:w-23 md:h-[80%]" },
 ];
 
 const MOBILE_BOOK_WIDTH_REM = 5.5;
+const TITLE_MAX_PX = 18; // spine title size when there's room
+const TITLE_MIN_PX = 11; // never smaller than this
+
+// Makes every spine title fit: long titles first wrap onto a second line (CSS),
+// and only if that's still too big, the letters shrink step by step.
+function fitSpineTitles(covers: (HTMLDivElement | null)[]) {
+  covers.forEach((cover) => {
+    const title = cover?.querySelector<HTMLElement>("[data-spine-title]");
+    if (!cover || !title) return;
+
+    let size = TITLE_MAX_PX;
+    title.style.fontSize = `${size}px`;
+    const fits = () => title.scrollHeight <= title.clientHeight + 1 && title.offsetWidth <= cover.clientWidth - 12;
+    while (size > TITLE_MIN_PX && !fits()) {
+      size -= 0.5;
+      title.style.fontSize = `${size}px`;
+    }
+  });
+}
 const LEAN_STAGGER_MS = 90;
 const LEAN_DURATION_MS = 1200;
 const totalLeanMs = (books.length - 1) * LEAN_STAGGER_MS + LEAN_DURATION_MS;
@@ -107,9 +129,15 @@ export default function BookCarousel() {
     requestAnimationFrame(frame);
   };
 
-  const recalcOnResize = () => applyFrame(books.map(targetAngle));
+  const recalcOnResize = () => {
+    fitSpineTitles(coverRefs.current);
+    applyFrame(books.map(targetAngle));
+  };
 
   useEffect(() => {
+    fitSpineTitles(coverRefs.current);
+    // fit again once the spine font has loaded (its letters are a different width)
+    document.fonts?.ready.then(() => fitSpineTitles(coverRefs.current));
     applyFrame(books.map(() => 0)); // render straight first
     requestAnimationFrame(() => runLeanAnimation()); // then lean, no drop/fade
     window.addEventListener("resize", recalcOnResize);
@@ -243,44 +271,39 @@ export default function BookCarousel() {
               className={`relative h-[99%] shrink-0 snap-center w-[var(--mobile-book-width)] md:w-20 ${book.mdClass ?? ""}`}
               style={{ "--mobile-book-width": `${MOBILE_BOOK_WIDTH_REM}rem` } as React.CSSProperties}
             >
-              {book.slug ? (
-                <Link
-                  href={`/books/${book.slug}`}
-                  className="block h-full w-full cursor-pointer"
-                  onClick={(event) => {
-                    if (dragMovedRef.current) {
-                      event.preventDefault();
-                      dragMovedRef.current = false;
-                    }
+              <Link
+                href={`/books/${book.slug}`}
+                aria-label={`${book.title}, ${book.year}`}
+                className="block h-full w-full cursor-pointer transition-[translate] duration-300 ease-out hover:-translate-y-3 focus-visible:-translate-y-3"
+                onClick={(event) => {
+                  if (dragMovedRef.current) {
+                    event.preventDefault();
+                    dragMovedRef.current = false;
+                  }
+                }}
+              >
+                {/* The spine: cover colors, title centered (reads bottom to top), year at the bottom */}
+                <div
+                  ref={(el) => { coverRefs.current[i] = el; }}
+                  className="book-cover relative flex h-full w-full items-center justify-center px-1.5 pb-10 pt-4"
+                  style={{
+                    backgroundColor: book.bg,
+                    color: book.fg,
+                    boxShadow: book.edge ? "inset 0 0 0 1px rgb(0 0 0 / 0.12)" : undefined,
                   }}
                 >
-                  <div
-                    ref={(el) => { coverRefs.current[i] = el; }}
-                    className="book-cover flex h-full w-full justify-center shadow-lg"
-                    style={{ backgroundColor: book.color } as React.CSSProperties}
+                  <p
+                    data-spine-title
+                    className={`${archivo.className} max-h-full text-center font-bold uppercase leading-[1.15] tracking-[0.07em] [text-wrap:balance]`}
+                    style={{ writingMode: "vertical-rl", transform: "rotate(180deg)", fontSize: TITLE_MAX_PX }}
                   >
-                    <p
-                      className={`${LibreCaslonText.className} whitespace-nowrap p-5 text-lg md:text-xl text-black`}
-                      style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
-                    >
-                      {book.title} <span className="text-sm font-normal">{book.year}</span>
-                    </p>
-                  </div>
-                </Link>
-              ) : (
-                <div
-                ref={(el) => { coverRefs.current[i] = el; }}
-                className="book-cover flex h-full w-full justify-center shadow-lg"
-                style={{ backgroundColor: book.color } as React.CSSProperties}
-              >
-                <p
-                  className={`${LibreCaslonText.className} whitespace-nowrap p-5 text-lg text-normal`}
-                  style={{ writingMode: "vertical-rl", transform: "rotate(180deg)" }}
-                >
-                  {book.title} <span className="text-sm font-normal">{book.year}</span>
-                </p>
+                    {book.title}
+                  </p>
+                  <span className={`${archivo.className} absolute bottom-3 left-0 right-0 text-center text-xs font-semibold tracking-wider opacity-85`}>
+                    {book.year}
+                  </span>
                 </div>
-              )}
+              </Link>
             </div>
           ))}
         </div>

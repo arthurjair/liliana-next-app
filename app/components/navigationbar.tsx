@@ -10,10 +10,10 @@ const janeAust = localFont({
 });
 
 const menuItems = [
-	{ label: "BOOKS", href: "/books" },
-	{ label: "NEWS", href: "/news" },
-	{ label: "ABOUT ME", href: "/about" },
-	{ label: "CONTACT", href: "/contact" },
+	{ label: "BOOKS", href: "/books", color: "#EAC342" },
+	{ label: "NEWS", href: "/news", color: "#E789B6" },
+	{ label: "ABOUT ME", href: "/about", color: "#A4C639" },
+	{ label: "CONTACT", href: "/contact", color: "#2E9EFF" },
 ];
 
 export default function NavigationBar() {
@@ -69,7 +69,11 @@ export default function NavigationBar() {
 					<Link
 						key={item.href}
 						href={item.href}
-						className="whitespace-nowrap text-lg text-black  font-medium transition-colors hover:text-zinc-600 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900"
+						style={{ "--underline": item.color } as React.CSSProperties}
+						aria-current={pathname?.startsWith(item.href) ? "page" : undefined}
+						className={`relative whitespace-nowrap text-lg font-medium text-black after:absolute after:-bottom-1 after:left-0 after:h-[3px] after:w-full after:origin-left after:rounded-full after:bg-[var(--underline)] after:transition-transform after:duration-300 after:ease-out hover:after:scale-x-100 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-zinc-900 ${
+							pathname?.startsWith(item.href) ? "after:scale-x-100" : "after:scale-x-0"
+						}`}
 						role="menuitem"
 					>
 						{item.label}

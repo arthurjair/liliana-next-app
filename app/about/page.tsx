@@ -1,6 +1,7 @@
 import type { CSSProperties } from "react";
 import Footer from "../components/footer";
 import SocialLinks from "../components/sociallinks";
+import Reveal from "../components/reveal";
 
 // Marker-style highlight in the book-spine colors from the homepage.
 // Colored text on white would be hard to read (especially yellow), so the color sits behind the text.
@@ -18,15 +19,15 @@ export default function AboutPage() {
           {/* Photo and text share one row of equal height:
               the text starts at the top of the photo and the icons end at its bottom. */}
           <div className="mt-10 grid gap-10 lg:mt-16 lg:grid-cols-[320px_1fr] lg:items-stretch lg:gap-16">
-            <div className="mx-auto w-full max-w-[320px] lg:mx-0 lg:h-full">
+            <Reveal className="mx-auto w-full max-w-[320px] overflow-hidden lg:mx-0 lg:h-full">
               <img
                 src="/About-me-photo.jpg"
                 alt="Liliana Erasmus"
-                className="h-[420px] w-full object-cover lg:h-full lg:min-h-[440px]"
+                className="h-[420px] w-full object-cover transition duration-700 ease-out hover:scale-[1.03] lg:h-full lg:min-h-[440px]"
               />
-            </div>
+            </Reveal>
 
-            <div className="flex flex-col justify-between gap-8">
+            <Reveal delay={150} className="flex flex-col justify-between gap-8">
               {/* -mt pulls the first line up so the letters (not the line box) line up with the photo */}
               <div className="max-w-2xl space-y-5 text-base leading-relaxed text-stone-700 lg:-mt-1.5 lg:text-lg">
                 <p>
@@ -64,7 +65,7 @@ export default function AboutPage() {
               </div>
 
               <SocialLinks colorMode="always" />
-            </div>
+            </Reveal>
           </div>
         </div>
       </main>
