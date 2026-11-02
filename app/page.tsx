@@ -14,16 +14,16 @@ const archivo = Archivo({
 // Spine colors are taken from each book's real cover (bg = spine, fg = lettering).
 // "edge" draws a thin outline on light spines so they don't disappear on the white page.
 const books = [
-  { slug: "Zap-Zap-ZZZIENNG", title: "Zap Zap Zzziennng!", year: 2025, bg: "#7FB6E3", fg: "#151515", rotate: 10, mdRotate: 6, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[90%]" },
-  { slug: "Aza-and-the-magic-doors", title: "Aza and the Magic Doors", year: 2024, bg: "#1C4C8F", fg: "#FFE03A", rotate: 0, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[95%]" },
-  { slug: "the-murf", title: "The Murf", year: 2024, bg: "#B7C26A", fg: "#24300C", rotate: -6, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[72%]" },
-  { slug: "Zie-wie-je-bent", title: "Be Who You Are, Become Whatever You Want", year: 2021, bg: "#F6E45A", fg: "#C81D25", rotate: 6.5, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[98%]" },
-  { slug: "Schelpeneiland", title: "Ora Ubao, Shell Island", year: 2020, bg: "#81CCEB", fg: "#1D2D7A", rotate: 0, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[86%]" },
-  { slug: "Friends-Everywhere", title: "Friends Everywhere", year: 2018, bg: "#2F97AB", fg: "#F7E04B", rotate: -5, gapAfter: 1.5, mdClass: "h-[92%] md:w-23 md:h-[80%]" },
-  { slug: "What-Does-Kiwi-Want-Now", title: "What Does Kiwi Want Now?", year: 2017, bg: "#3F306E", fg: "#FF9A2E", rotate: 5, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[86%]" },
-  { slug: "Ghosts-and-Monsters-Everywhere", title: "Ghosts and Monsters Everywhere", year: 2017, bg: "#FCC51D", fg: "#B9181E", rotate: 0, gapAfter: 2, mdClass: "h-[98%] md:w-23 md:h-[97%]" },
-  { slug: "Grandmas-and-Grandpas-Everywhere", title: "Grandmas and Grandpas Everywhere", year: 2016, bg: "#FBFDFE", fg: "#D0202A", edge: true, rotate: -5, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[94%]" },
-  { slug: "A-Ray-on-the-Hook", title: "A Ray on the Hook", year: 2015, bg: "#CFE3EF", fg: "#1675C6", edge: true, rotate: 5, gapAfter: 1.5, mdClass: "h-[96%] md:w-23 md:h-[80%]" },
+  { slug: "Zap-Zap-ZZZIENNG", title: "Zap Zap Zzziennng!", year: 2025, color: "#EAC342", rotate: 10, mdRotate: 6, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[98%]" },
+  { slug: "Aza-and-the-magic-doors", title: "Aza and the Magic Doors", year: 2024, color: "#2E9EFF", rotate: 0, gapAfter: 1.5, mdClass: " h-[98%] md:w-23 md:h-[95%]" },
+  { slug: "the-murf", title: "The Murf", year: 2024, color: "#A4C639", rotate: -6, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[75%]" },
+  { slug: "Zie-wie-je-bent", title: "Be Who You Are, Become Whatever You Want", year: 2021, color: "#F8EC62", rotate: 6.5, gapAfter: 1.5, mdClass: "h-[92%] md:w-23 md:h-[85%]" },
+  { slug: "Schelpeneiland", title: "Shell Island", year: 2021, color: "#56C3EE", rotate: 0, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[93%]" },
+  { slug: "Friends-Everywhere", title: "Friends Everywhere", year: 2018, color: "#E789B6", rotate: -5, gapAfter: 1.5, mdClass: "md:w-23 md:h-[75%]" },
+  { slug: "What-Does-Kiwi-Want-Now", title: "What does Kiwi want now?", year: 2018, color: "#FE7C02", rotate: 5, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[85%]" },
+  { slug: "Ghosts-and-Monsters-Everywhere", title: "Ghosts and Monsters Everywhere", year: 2017, color: "#CE181B", rotate: 0, gapAfter: 2, mdClass: "h-[98%] md:w-23 md:h-[97%]" },
+  { slug: "Grandmas-and-Grandpas-Everywhere", title: "Grandmas and Grandpas Everywhere", year: 2016, color: "#96D4E3", rotate: -5, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[92%]" },
+  { slug: "A-Ray-on-the-Hook", title: "A Ray on the Hook", year: 2015, color: "#FAF292", rotate: 5, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[85%]" },
 ];
 
 const MOBILE_BOOK_WIDTH_REM = 5.5;
