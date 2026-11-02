@@ -1,7 +1,6 @@
 "use client";
 
 import { useRef, useState, useTransition } from "react";
-import { uploadPresigned } from "@vercel/blob/client";
 import { deletePost, discardImages, logout, savePost, type PostInput } from "./actions";
 import type { NewsPost } from "../news/store";
 
@@ -113,12 +112,22 @@ export default function NewsEditor({ initialPosts }: { initialPosts: NewsPost[] 
             if (!ALLOWED_TYPES.includes(prepared.type)) {
               throw new Error(`"${file.name}" isn't a JPG, PNG or WebP photo.`);
             }
-            const blob = await uploadPresigned(`news/images/${safeFileName(prepared.name)}`, prepared, {
-              access: "public",
-              handleUploadUrl: "/api/news-upload",
-            });
-            newUploads.current.add(blob.url);
-            setForm((current) => (current ? { ...current, images: [...current.images, blob.url] } : current));
+            if (prepared.size > 4 * 1024 * 1024) {
+              throw new Error(`"${file.name}" is too big (max 4 MB). Try a smaller photo.`);
+            }
+
+            // send the photo to our own upload route, which saves it to Vercel Blob
+            const body = new FormData();
+            body.append("file", prepared, safeFileName(prepared.name));
+            const response = await fetch("/api/news-upload", { method: "POST", body });
+            const data = (await response.json().catch(() => ({}))) as { url?: string; error?: string };
+            if (!response.ok || !data.url) {
+              throw new Error(data.error ?? `Upload failed (status ${response.status})`);
+            }
+
+            const url = data.url;
+            newUploads.current.add(url);
+            setForm((current) => (current ? { ...current, images: [...current.images, url] } : current));
           } catch (error) {
             console.error("Photo upload failed:", error);
             const reason = error instanceof Error ? error.message : String(error);
