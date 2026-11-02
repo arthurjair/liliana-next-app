@@ -1,7 +1,7 @@
 "use client";
 
 import { useRef, useState, useTransition } from "react";
-import { upload } from "@vercel/blob/client";
+import { uploadPresigned } from "@vercel/blob/client";
 import { deletePost, discardImages, logout, savePost, type PostInput } from "./actions";
 import type { NewsPost } from "../news/store";
 
@@ -64,6 +64,7 @@ export default function NewsEditor({ initialPosts }: { initialPosts: NewsPost[] 
   const fileInput = useRef<HTMLInputElement>(null);
   // photos uploaded while editing that aren't saved in a post yet
   const newUploads = useRef<Set<string>>(new Set());
+  const uploadCounter = useRef(0);
 
   const update = (changes: Partial<FormState>) => setForm((current) => (current ? { ...current, ...changes } : current));
 
@@ -94,35 +95,48 @@ export default function NewsEditor({ initialPosts }: { initialPosts: NewsPost[] 
     setForm(null);
   };
 
-  const handleFiles = async (files: FileList | null) => {
-    if (!files || files.length === 0) return;
+  const handleFiles = async (fileList: FileList | null) => {
+    // copy the chosen files first, then empty the picker so the same photo can be picked again
+    const files = fileList ? Array.from(fileList) : [];
+    if (fileInput.current) fileInput.current.value = "";
+    if (files.length === 0) return;
     setMessage(null);
 
-    await Promise.all(
-      Array.from(files).map(async (file) => {
-        const key = `${file.name}-${crypto.randomUUID()}`;
-        setUploading((list) => [...list, key]);
-        try {
-          const prepared = await shrinkImage(file);
-          if (!ALLOWED_TYPES.includes(prepared.type)) {
-            throw new Error(`"${file.name}" isn't a JPG, PNG or WebP photo.`);
+    try {
+      await Promise.all(
+        files.map(async (file) => {
+          uploadCounter.current += 1;
+          const key = `upload-${uploadCounter.current}`;
+          setUploading((list) => [...list, key]);
+          try {
+            const prepared = await shrinkImage(file);
+            if (!ALLOWED_TYPES.includes(prepared.type)) {
+              throw new Error(`"${file.name}" isn't a JPG, PNG or WebP photo.`);
+            }
+            const blob = await uploadPresigned(`news/images/${safeFileName(prepared.name)}`, prepared, {
+              access: "public",
+              handleUploadUrl: "/api/news-upload",
+            });
+            newUploads.current.add(blob.url);
+            setForm((current) => (current ? { ...current, images: [...current.images, blob.url] } : current));
+          } catch (error) {
+            console.error("Photo upload failed:", error);
+            const reason = error instanceof Error ? error.message : String(error);
+            const text = reason.startsWith('"')
+              ? reason
+              : `Uploading "${file.name}" didn't work. (Details for Coralie: ${reason})`;
+            setMessage({ type: "error", text });
+          } finally {
+            setUploading((list) => list.filter((k) => k !== key));
           }
-          const blob = await upload(`news/images/${safeFileName(prepared.name)}`, prepared, {
-            access: "public",
-            handleUploadUrl: "/api/news-upload",
-          });
-          newUploads.current.add(blob.url);
-          setForm((current) => (current ? { ...current, images: [...current.images, blob.url] } : current));
-        } catch (error) {
-          const text = error instanceof Error && error.message.startsWith('"') ? error.message : `Uploading "${file.name}" didn't work. Try again?`;
-          setMessage({ type: "error", text });
-        } finally {
-          setUploading((list) => list.filter((k) => k !== key));
-        }
-      }),
-    );
-
-    if (fileInput.current) fileInput.current.value = "";
+        }),
+      );
+    } catch (error) {
+      // safety net: anything unexpected still shows up as a message instead of failing silently
+      console.error("Photo picker failed:", error);
+      const reason = error instanceof Error ? error.message : String(error);
+      setMessage({ type: "error", text: `Adding photos didn't work. (Details for Coralie: ${reason})` });
+    }
   };
 
   const removeImage = (url: string) => {
