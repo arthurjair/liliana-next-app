@@ -14,7 +14,7 @@ const archivo = Archivo({
 // Spine colors are taken from each book's real cover (bg = spine, fg = lettering).
 // "edge" draws a thin outline on light spines so they don't disappear on the white page.
 const books = [
-  { slug: "Zap-Zap-ZZZIENNG", title: "Zap Zap Zzziennng!", year: 2025, bg: "#7cb4e3", fg: "#151515", rotate: 10, mdRotate: 6, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[90%]" },
+  { slug: "Zap-Zap-ZZZIENNG", title: "Zap Zap Zzziennng!", year: 2025, bg: "#7fb4df", fg: "#151515", rotate: 10, mdRotate: 6, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[90%]" },
   { slug: "Aza-and-the-magic-doors", title: "Aza and the Magic Doors", year: 2024, bg: "#1C4C8F", fg: "#FFE03A", rotate: 0, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[95%]" },
   { slug: "the-murf", title: "The Murf", year: 2024, bg: "#B7C26A", fg: "#24300C", rotate: -6, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[72%]" },
   { slug: "Zie-wie-je-bent", title: "Be Who You Are, Become Whatever You Want", year: 2021, bg: "#F6E45A", fg: "#C81D25", rotate: 6.5, gapAfter: 1.5, mdClass: "h-[98%] md:w-23 md:h-[98%]" },
